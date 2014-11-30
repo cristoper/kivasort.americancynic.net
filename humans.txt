@@ -8,4 +8,4 @@ Developer: American Cynic (http://americancynic.net)
 # TECHNOLOGY COLOPHON
 
 * HTML5 Boilerplate: http://html5boilerplate.com/
-* Dynatable: http://www.dynatable.com
+* DataTables: http://www.datatables.net/
