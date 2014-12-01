@@ -5,7 +5,10 @@ $(document).ready(function () {
         scrollY: 300,
         autoWidth: true,
         scrollX: true,
-        dom: 'C<"clear">lfrtip' // ColVis plugin
+        dom: 'C<"clear">lfrtip', // ColVis plugin
+
+        /* Sort by Portfolio Yield, then Profitability */
+        order: [[2, "desc"], [3, "desc"]]
     }).DataTable();
 
     table.on('column-visibility.dt', function() {
