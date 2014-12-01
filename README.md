@@ -1,6 +1,6 @@
 # KivaSort.org
 
-KivaSort.org is a simple JavaScript web application which provides a table of Kiva field partners which may be sorted and filtered.
+[KivaSort.org](http://KivaSort.org) is a simple JavaScript web application which provides a table of Kiva field partners which may be sorted and filtered.
 
 ## Contributing
 
