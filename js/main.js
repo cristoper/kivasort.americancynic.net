@@ -18,11 +18,17 @@ $(document).ready(function () {
     table.on('processing.dt', function() {
         // Initially hide/show incomplete rows based on HTML
         toggleIncomplete($('#hideIncomplete').is(':checked'));
+        toggleInactive($('#hideInactive').is(':checked'));
     });
 
     // hide/show incomplete rows whenever checkbox is clicked
     $('#hideIncomplete').click(function() {
         toggleIncomplete(this.checked);
+    });
+
+    // hide/show inactive rows whenever checkbox is clicked
+    $('#hideInactive').click(function() {
+        toggleInactive(this.checked);
     });
 
     function toggleIncomplete(isChecked) {
@@ -32,4 +38,13 @@ $(document).ready(function () {
             table.columns('th').search('.', true).draw();
         }
     }
+
+    function toggleInactive(isChecked) {
+        if (isChecked) {
+            table.columns('#statusCol').search('^active', true).draw();
+        } else {
+            table.columns('#statusCol').search('.', true).draw();
+        }
+    }
+
 });

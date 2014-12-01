@@ -33,7 +33,8 @@
         <li><a href="#support">Support</a></li>
     </ul>
     <div id="data" class='kiva_sort'>
-        <label><input id='hideIncomplete' type='checkbox' value='doHide' checked />Hide rows with incomplete data</label>
+        <label><input id='hideInactive' type='checkbox' value='doHide' checked />Hide inactive field partners</label><br/>
+        <label><input id='hideIncomplete' type='checkbox' value='doHide' checked />Hide field partners with incomplete data</label><br/>
         <table id="KivaSort" class="responsive">
             <thead>
                 <tr>
@@ -41,7 +42,7 @@
                     <th class="all">Name</th>
                     <th>Portfolio Yield</th>
                     <th>Profitability</th>
-                    <th>Status</th>
+                    <th id='statusCol'>Status</th>
                     <th>Start Date</th>
                     <th>Country</th>
                     <th>Rating</th>
