@@ -102,6 +102,11 @@ textarea {
     margin: 0 auto;
 }
 
+td {
+    max-width: 10em;
+    overflow: hidden;
+    word-wrap: break-word;
+}
 
 
 
