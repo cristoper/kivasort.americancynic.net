@@ -97,6 +97,10 @@ Browse Happy prompt
 Author's custom styles
 ========================================================================== */
 
+body {
+    padding: 1em;
+}
+
 .tab_content {
     max-width: 1200px;
     margin: 0 auto;
