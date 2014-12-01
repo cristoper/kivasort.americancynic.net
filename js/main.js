@@ -4,4 +4,6 @@ $(document).ready(function () {
         autoWidth: true,
         scrollX: true
     });
+
+    $('#tabs').tabs();
 });
