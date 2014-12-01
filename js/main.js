@@ -1,8 +1,9 @@
 $(document).ready(function () {
-    $('#KivaSort').makeKivaTable({
+    var table = $('#KivaSort').makeKivaTable({
         scrollY: 300,
         autoWidth: true,
         scrollX: true
+    }).DataTable();
     });
 
     $('#tabs').tabs();
