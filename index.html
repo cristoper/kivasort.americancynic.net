@@ -32,7 +32,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#support">Support</a></li>
     </ul>
-    <div id="data" class='kiva_sort'>
+    <div id="data" class='tab_content'>
         <label><input id='hideInactive' type='checkbox' value='doHide' checked />Hide inactive field partners</label><br/>
         <label><input id='hideIncomplete' type='checkbox' value='doHide' checked />Hide field partners with incomplete data</label><br/>
         <table id="KivaSort" class="responsive">
@@ -58,10 +58,31 @@
             </thead>
         </table>
     </div>
-    <div id="about">
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    <div id="about" class="tab_content">
+        <h2>What is it?</h2>
+        <p>A table of <a href='http://kiva.com/'>Kiva's</a> field partners (the microfinance organizations which administer loans made possible by Kiva) which may be sorted and filtered.
+        <h2>Motivation</h2>
+        <p>Many of Kiva's field partners collect interest on the loans they disburse. The rates of interest vary, but they are sometimes very high despite the fact that much of the risk and principal cost is offloaded to Kiva's generous users. Identifying field partners with high (or low) interest would be easiest if they could all be sorted by their "<a href='http://www.kiva.org/help/borrowingCostComparison#AveragePartnerPortfolioYield'>Portfolio Yield</a>" (average interest rates) and "<a href='http://www.kiva.org/help/borrowingCostComparison#AveragePartnerReturnOnAssets'>Profitability</a>" (return on assets) metrics. The higher those rates, the higher the interest will tend to be on loans from those lenders. That is one of the main motivating forces behind the creation of KivaSort
+        <p>Kiva does not provide such a table on their own site, but they do provide <a href='http://build.kiva.org/'>nice APIs</a> for their various services. Another third-party website called <a href='http://www.kivalens.org/'>KivaLens</a> exists for sorting field partners. However, it requires Microsoft's Silverlight plugin to run, and so is not easy to run on many browsers. KivaSort is written in JavaScript, and therefore supports more operating systems and default browser installations.
+        <p>By default, KivaSort lists field partners ordered by "Profitability" followed by "Portfolio Yield", so that field partners making the most profit and with high-priced loans are at the top. Note that expensive loans do not necessarily indicate usurious loans (at least not more usurious than other lenders); some locations have legitimately high costs associated with administering loans due to such factors as social instability and lack of infrastructure. In that respect, a high "Profitability" metric may be the best way to identify highly exploitative lenders -- although a consistently negative "Profitability" may indicate a non-sustainable field partner.
+        <h3>Further reading</h3>
+        <ul>
+            <li><a href='http://blog.microfinancetransparency.com/whats-wrong-with-kivas-portfolio-yield-statistic/' title='What’s Wrong With Kiva’s Portfolio Yield Statistic?'>"What’s Wrong With Kiva’s Portfolio Yield Statistic?" by Hugh Sinclair</a></li>
+        </ul>
+        <h2>How to use KivaSort</h2>
+        <ul>
+            <li>Click column header to sort in ascending order. Click again to sort in descending order.</li>
+            <li>Hold down shift and click column header to sort by multiple columns simultaneously.</li>
+            <li>Click the "Show / hide columns" button at the top right of the table to select which columns are visible (and may therefore be used to sort the table).</li>
+            <li>Columns that are hidden or do not fit on the screen can be displayed as sub-rows by clicking the green icon in the first column.</li>
+            <li>Type a [partial] word in the "Search" box to filter the table down to only rows containing the search term in any of their columns.</li>
+            <li>Uncheck the "Hide inactive field partners" box to show field partners who are currently inactive or paused.</li>
+            <li>Uncheck the "Hide field partners with incomplete data" to show field partners who do not have some data (such as Portfolio Rate). Missing data is displayed as "-" in the table.</li>
+        </ul>
+        <h2>Who?</h2>
+        <p>KivaSort.org was created and is maintained by <a href='https://github.com/cristoper'>cristoper</a>.
     </div>
-    <div id="support">
+    <div id="support" class="tab_content">
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
     </div>
 </div>

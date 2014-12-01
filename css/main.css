@@ -97,8 +97,8 @@ Browse Happy prompt
 Author's custom styles
 ========================================================================== */
 
-.kiva_sort {
-    max-width: 95%;
+.tab_content {
+    max-width: 1200px;
     margin: 0 auto;
 }
 
