@@ -6,6 +6,7 @@ $(document).ready(function () {
         autoWidth: true,
         scrollX: true,
         dom: 'C<"clear">lfrtip', // ColVis plugin
+        ks_appID: 'org.kiva',
 
         /* Sort by Portfolio Yield, then Profitability */
         order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
