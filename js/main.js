@@ -8,7 +8,7 @@ $(document).ready(function () {
         dom: 'C<"clear">lfrtip', // ColVis plugin
 
         /* Sort by Portfolio Yield, then Profitability */
-        order: [[3, "desc"], [2, "desc"]]
+        order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
     }).DataTable();
 
     table.on('column-visibility.dt', function() {
