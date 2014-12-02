@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    $('#tabs').tabs();
-
     var table = $('#KivaSort').makeKivaTable({
         scrollY: 300,
         autoWidth: true,
@@ -11,6 +9,18 @@ $(document).ready(function () {
         /* Sort by Portfolio Yield, then Profitability */
         order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
     }).DataTable();
+
+    $('#tabs').tabs({
+        activate: function(e, ui) {
+            if (ui.newTab.is($('#fpd_link'))) {
+                // If the user is on a different tab when the table data loads,
+                // then the Responsive plugin will not calculate column widths
+                // correctly. So we recalculate them when the tab becomes
+                // visible.
+                table.responsive.recalc();
+            }
+        }
+    });
 
     table.on('column-visibility.dt', function() {
         $.fn.dataTable.ColVis.fnRebuild();
