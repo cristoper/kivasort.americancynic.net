@@ -3,11 +3,12 @@ $(document).ready(function () {
         deferRender: true,
         responsive: true,
         fixedHeader: true,
+        lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         dom: 'Bftip',
         colReorder: true,
         language: {
             buttons: {
-                pageLength: { _: "Show %d rows/page" }
+                pageLength: { '-1': "Show all rows", _: "Show %d rows/page" }
             }
         },
         buttons: [ 'pageLength',
