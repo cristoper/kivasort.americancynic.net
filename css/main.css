@@ -106,8 +106,12 @@ h1 {
 }
 
 .tab_content {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 60em;
+}
+
+.tab_content#data {
+    max-width: none;
+    margin: 0 auto;    
 }
 
 td {
