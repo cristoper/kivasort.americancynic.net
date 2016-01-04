@@ -11,6 +11,7 @@ $(document).ready(function () {
         order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
     }).DataTable();
 
+    
     $('#tabs').tabs({
         activate: function(e, ui) {
             if (ui.newTab.is($('#fpd_link'))) {
@@ -19,6 +20,12 @@ $(document).ready(function () {
                 // correctly. So we recalculate them when the tab becomes
                 // visible.
                 table.responsive.recalc();
+
+                // Re-enable the fixed header
+                table.fixedHeader.enable(true);
+            } else {
+                // remove fixed header when viewing other tabs
+                table.fixedHeader.enable(false);
             }
         }
     });
