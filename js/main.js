@@ -1,11 +1,10 @@
 $(document).ready(function () {
     var table = $('#KivaSort').makeKivaTable({
-        scrollY: 300,
-        autoWidth: true,
-        scrollX: true,
         deferRender: true,
+        responsive: true,
+        fixedHeader: true,
         dom: 'Bftip',
-        buttons: ['pageLength', 'colvis', 'copy', 'csv', 'excel', 'pdf'],
+        buttons: ['pageLength', 'colvis', 'copy', 'csv', 'pdf'],
 
         /* Sort by Portfolio Yield, then Profitability */
         order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
