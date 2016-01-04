@@ -14,9 +14,10 @@ $(document).ready(function () {
         buttons: [ 'pageLength',
             'colvis',  
             { extend: 'collection', text: 'Export',
-                buttons: [ {extend: 'copy', text: 'Copy to Clipboard'},
+                buttons: [
+                    {extend: 'copy', text: 'Copy to Clipboard'},
                     { extend: 'csv', text: 'Save as CSV'},
-                    { extend: 'pdf', text: 'Save as PDF'} ]
+                ]
             }],
 
             /* Sort by Portfolio Yield, then Profitability */
