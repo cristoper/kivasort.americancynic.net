@@ -5,7 +5,13 @@ $(document).ready(function () {
         fixedHeader: true,
         dom: 'Bftip',
         colReorder: true,
-        buttons: ['pageLength', 'colvis', 'copy', 'csv', 'pdf'],
+        buttons: ['pageLength', 'colvis',  {
+            extend: 'collection',
+            text: 'Export',
+            buttons: [ {extend: 'copy', text: 'Copy to Clipboard'},
+                { extend: 'csv', text: 'Save as CSV'},
+                { extend: 'pdf', text: 'Save as PDF'} ]
+        }],
 
         /* Sort by Portfolio Yield, then Profitability */
         order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
