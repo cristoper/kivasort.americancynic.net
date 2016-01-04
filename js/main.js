@@ -3,7 +3,9 @@ $(document).ready(function () {
         scrollY: 300,
         autoWidth: true,
         scrollX: true,
-        dom: 'C<"clear">lfrtip', // ColVis plugin
+        deferRender: true,
+        dom: 'Bftip',
+        buttons: ['pageLength', 'colvis', 'copy', 'csv', 'excel', 'pdf'],
 
         /* Sort by Portfolio Yield, then Profitability */
         order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
@@ -19,10 +21,6 @@ $(document).ready(function () {
                 table.responsive.recalc();
             }
         }
-    });
-
-    table.on('column-visibility.dt', function() {
-        $.fn.dataTable.ColVis.fnRebuild();
     });
 
     table.on('processing.dt', function() {
