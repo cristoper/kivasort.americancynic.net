@@ -4,6 +4,7 @@ $(document).ready(function () {
         responsive: true,
         fixedHeader: true,
         dom: 'Bftip',
+        colReorder: true,
         buttons: ['pageLength', 'colvis', 'copy', 'csv', 'pdf'],
 
         /* Sort by Portfolio Yield, then Profitability */
