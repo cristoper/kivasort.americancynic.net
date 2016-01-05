@@ -1,29 +1,4 @@
 $(document).ready(function () {
-    var table = $('#KivaSort').makeKivaTable({
-        deferRender: true,
-        responsive: true,
-        fixedHeader: true,
-        lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-        dom: 'Bftip',
-        colReorder: true,
-        language: {
-            buttons: {
-                pageLength: { '-1': "Show all rows", _: "Show %d rows/page" }
-            }
-        },
-        buttons: [ 'pageLength',
-            'colvis',  
-            { extend: 'collection', text: 'Export',
-                buttons: [
-                    {extend: 'copy', text: 'Copy to Clipboard'},
-                    { extend: 'csv', text: 'Save as CSV'},
-                ]
-            }],
-
-            /* Sort by Portfolio Yield, then Profitability */
-            order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
-    }).DataTable();
-
 
     $('#tabs').tabs({
         activate: function(e, ui) {
@@ -43,11 +18,64 @@ $(document).ready(function () {
         }
     });
 
-    table.on('processing.dt', function() {
+    var kivaTable = $('#KivaSort');
+    var dTable;
+
+    kivaTable.on('init.dt', function(e, s, b) {
+        // Keep reference to DataTable
+        dTable = kivaTable.DataTable();
+
         // Initially hide/show incomplete rows based on HTML
         toggleIncomplete($('#hideIncomplete').is(':checked'));
         toggleInactive($('#hideInactive').is(':checked'));
     });
+
+    kivaTable.makeKivaTable({
+        deferRender: true,
+        responsive: true,
+        fixedHeader: true,
+        lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+        dom: 'Bftip',
+        colReorder: true,
+        language: {
+            buttons: {
+                pageLength: { '-1': "Show all rows", _: "Show %d rows/page" }
+            }
+        },
+        buttons: [ 'pageLength',
+            'colvis',  
+            { extend: 'collection', text: 'Export',
+                buttons: [
+                    {extend: 'copy', text: 'Copy to Clipboard'},
+                    { extend: 'csv', text: 'Download as CSV'},
+                    { extend: 'json', text: 'View source JSON' }
+                ]
+            }],
+            ks_partnerData:
+                // This line is processed by cpp during build time:
+                #include "partners.cache"
+            ,
+
+        /* Sort by Portfolio Yield, then Profitability */
+        order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
+    });
+
+
+    function toggleIncomplete(isChecked) {
+        if (isChecked) {
+            dTable.columns('th').search('^(?!-$)', true, false).draw();
+        } else{
+            dTable.columns('th').search('.', true).draw();
+        }
+    }
+
+    function toggleInactive(isChecked) {
+        if (isChecked) {
+            dTable.columns('#statusCol').search('^active', true).draw();
+        } else {
+            dTable.columns('#statusCol').search('.', true).draw();
+        }
+    }
 
     // hide/show incomplete rows whenever checkbox is clicked
     $('#hideIncomplete').click(function() {
@@ -58,21 +86,5 @@ $(document).ready(function () {
     $('#hideInactive').click(function() {
         toggleInactive(this.checked);
     });
-
-    function toggleIncomplete(isChecked) {
-        if (isChecked) {
-            table.columns('th').search('^(?!-$)', true, false).draw();
-        } else{
-            table.columns('th').search('.', true).draw();
-        }
-    }
-
-    function toggleInactive(isChecked) {
-        if (isChecked) {
-            table.columns('#statusCol').search('^active', true).draw();
-        } else {
-            table.columns('#statusCol').search('.', true).draw();
-        }
-    }
 
 });
