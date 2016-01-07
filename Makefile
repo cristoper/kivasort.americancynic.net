@@ -30,14 +30,8 @@ $(DST_JSDIR)/ks/kiva_sort.js: $(SRC_JSDIR)/ks/kiva_sort.js | $(DST_JSDIR)
 $(DST_CSSDIR)/main.css: $(SRC_CSSDIR)/main.css | $(DST_CSSDIR)
 	cp $< $@
 
-$(OUTPUTDIR):
-	test -d $(OUTPUTDIR) || mkdir $@
-
-$(DST_JSDIR): |$(OUTPUTDIR)
-	test -d $(DST_JSDIR) || mkdir $@
-
-$(DST_CSSDIR): |$(OUTPUTDIR)
-	test -d $(DST_CSSDIR) || mkdir $@
+$(OUTPUTDIR) $(DST_JSDIR) $(DST_CSSDIR):
+	test -d $@ || mkdir $@
 
 clean:
 	-rm -r $(OUTPUTDIR)/*
