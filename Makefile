@@ -42,10 +42,8 @@ $(DST_CSSDIR): |$(OUTPUTDIR)
 clean:
 	-rm -r $(OUTPUTDIR)/*
 
-.SECONDEXPANSION:
-
 # Copy everything in root/ to output/
-$(DST_ROOT_FILES): %: $$(subst $(OUTPUTDIR),root,%) |$(OUTPUTDIR)
+$(DST_ROOT_FILES): output/%: root/%|$(OUTPUTDIR)
 	cp $< $(OUTPUTDIR)
 
 .PHONY: all clean javascript
