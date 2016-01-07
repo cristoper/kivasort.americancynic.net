@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    var kivaTable = $('#KivaSort');
+    var dTable;
+
     $('#tabs').tabs({
         activate: function(e, ui) {
             if (ui.newTab.is($('#fpd_link'))) {
@@ -7,19 +10,17 @@ $(document).ready(function () {
                 // then the Responsive plugin will not calculate column widths
                 // correctly. So we recalculate them when the tab becomes
                 // visible.
-                table.responsive.recalc();
+                dTable.responsive.recalc();
 
                 // Re-enable the fixed header
-                table.fixedHeader.enable(true);
+                dTable.fixedHeader.enable(true);
             } else {
                 // remove fixed header when viewing other tabs
-                table.fixedHeader.enable(false);
+                dTable.fixedHeader.enable(false);
             }
         }
     });
 
-    var kivaTable = $('#KivaSort');
-    var dTable;
 
     kivaTable.on('init.dt', function(e, s, b) {
         // Keep reference to DataTable
