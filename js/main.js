@@ -52,10 +52,15 @@ $(document).ready(function () {
                     { extend: 'json', text: 'View source JSON' }
                 ]
             }],
+
+            /** To NOT use the cached json file, include -Dno_json in the
+             * Makefiles CPPFLAGS */
+            #ifndef no_json
             ks_partnerData:
-                // This line is processed by cpp during build time:
-                #include "partners.cache"
+                #include "partners.json"
             ,
+            #endif
+
 
         /* Sort by Portfolio Yield, then Profitability */
         order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]

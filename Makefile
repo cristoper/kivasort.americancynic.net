@@ -13,6 +13,9 @@ CSS_FILES := $(wildcard $(SRC_CSSDIR)/*.css)
 
 CPPFLAGS := -x c -P
 
+# To disable use of partners.json use:
+#CPPFLAGS := -x c -P -Dno_json
+
 all: javascript css $(DST_ROOT_FILES)
 
 javascript: $(DST_JSDIR)/main.js $(DST_JSDIR)/ks/kiva_sort.js
@@ -20,7 +23,7 @@ javascript: $(DST_JSDIR)/main.js $(DST_JSDIR)/ks/kiva_sort.js
 css: $(DST_CSSDIR)/main.css
 
 # Preprocess main.js to include cached JSON from Kiva.org
-$(DST_JSDIR)/main.js: $(SRC_JSDIR)/main.js | $(DST_JSDIR)
+$(DST_JSDIR)/main.js: $(SRC_JSDIR)/main.js Makefile | $(DST_JSDIR)
 	$(CPP) $(CPPFLAGS) $< -o $@
 
 $(DST_JSDIR)/ks/kiva_sort.js: $(SRC_JSDIR)/ks/kiva_sort.js | $(DST_JSDIR)
