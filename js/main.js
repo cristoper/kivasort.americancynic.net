@@ -1,3 +1,4 @@
+#include "ks/kiva_sort.js"
 $(document).ready(function () {
 
     var kivaTable = $('#KivaSort');

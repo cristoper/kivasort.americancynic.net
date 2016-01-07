@@ -11,24 +11,24 @@ DST_ROOT_FILES = $(patsubst root/%, $(OUTPUTDIR)/%, $(ROOT_FILES))
 JS_FILES = $(wildcard $(SRC_JSDIR)/**/*.js)
 CSS_FILES := $(wildcard $(SRC_CSSDIR)/*.css)
 
-CPPFLAGS := -x c -P
+UGLIFY := node_modules/uglify-js/bin/uglifyjs
+UGLYFLAGS := --compress --mangle
 
+CPPFLAGS := -x c -w -P
 # To disable use of partners.json use:
-#CPPFLAGS := -x c -P -Dno_json
+#CPPFLAGS := -x c -w -P -Dno_json
 
-all: javascript css $(DST_ROOT_FILES)
+all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css
 
-javascript: $(DST_JSDIR)/main.js $(DST_JSDIR)/ks/kiva_sort.js
-
-css: $(DST_CSSDIR)/main.css
-
-# Preprocess main.js to include cached JSON from Kiva.org
-$(DST_JSDIR)/main.js: $(SRC_JSDIR)/main.js Makefile | $(DST_JSDIR)
+$(OUTPUTDIR)/index.html: index.html $(DST_JSDIR)/combined.js
 	$(CPP) $(CPPFLAGS) $< -o $@
 
-$(DST_JSDIR)/ks/kiva_sort.js: $(SRC_JSDIR)/ks/kiva_sort.js | $(DST_JSDIR)
-	mkdir -p $(DST_JSDIR)/ks/
-	cp $< $@
+# Combine main.js, partners.json, kiva_sort.js
+# If $(DEBUG_MODE) is defined, then don't compress (ie: make DEBUG_MODE=yes)
+$(DST_JSDIR)/combined.js: $(SRC_JSDIR)/main.js $(SRC_JSDIR)/ks/kiva_sort.js \
+    | $(DST_JSDIR)
+	$(CPP) $(CPPFLAGS) $< -o $@
+	$(if $(DEBUG_MODE),,$(UGLIFY) $@ $(UGLYFLAGS) -o $@)
 
 $(DST_CSSDIR)/main.css: $(SRC_CSSDIR)/main.css | $(DST_CSSDIR)
 	cp $< $@
@@ -43,4 +43,4 @@ clean:
 $(DST_ROOT_FILES): output/%: root/%|$(OUTPUTDIR)
 	cp $< $(OUTPUTDIR)
 
-.PHONY: all clean javascript
+.PHONY: all clean javascript css
