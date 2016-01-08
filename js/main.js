@@ -1,5 +1,7 @@
-//changequote(`<<', `>>')
-undivert(<<js/ks/kiva_sort.js>>)
+// Change m4 quotes to something that doesn't ruin syntax highlighting or
+// interfere with the rest of the file:
+//changequote(`<<', `>>') 
+undivert(<<node_modules/jquery-kivasort/kiva_sort.js>>)
 $(document).ready(function () {
 
     var kivaTable = $('#KivaSort');
