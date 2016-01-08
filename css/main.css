@@ -121,18 +121,14 @@ td {
     word-wrap: break-word;
 }
 
+#tabs {
+    overflow: hidden;
+    display:none;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+#loading p {
+    text-align: center;
+}
 
 
 /* ==========================================================================

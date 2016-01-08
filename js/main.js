@@ -19,6 +19,10 @@ $(document).ready(function () {
                 // remove fixed header when viewing other tabs
                 dTable.fixedHeader.enable(false);
             }
+        },
+        create: function() {
+            $('#tabs').show();
+            $('#loading').hide();
         }
     });
 
@@ -42,7 +46,8 @@ $(document).ready(function () {
         language: {
             buttons: {
                 pageLength: { '-1': "Show all rows", _: "Show %d rows/page" }
-            }
+            },
+            loadingRecords: '<div class="ui-widget ui-state-default">Loading... <img src="ajax-loader.gif"></div>'
         },
         buttons: [ 'pageLength',
             'colvis',  
@@ -66,7 +71,6 @@ $(document).ready(function () {
         /* Sort by Portfolio Yield, then Profitability */
         order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
     });
-
 
     function toggleIncomplete(isChecked) {
         if (isChecked) {
