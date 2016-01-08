@@ -8,9 +8,6 @@ DST_CSSDIR = $(OUTPUTDIR)/$(SRC_CSSDIR)
 ROOT_FILES = $(wildcard $(ROOTDIR)/*)
 DST_ROOT_FILES = $(patsubst root/%, $(OUTPUTDIR)/%, $(ROOT_FILES))
 
-JS_FILES = $(wildcard $(SRC_JSDIR)/**/*.js)
-CSS_FILES := $(wildcard $(SRC_CSSDIR)/*.css)
-
 UGLIFY := node_modules/uglify-js/bin/uglifyjs
 UGLYFLAGS := --compress --mangle
 
@@ -26,7 +23,7 @@ $(OUTPUTDIR)/index.html: index.html $(DST_JSDIR)/combined.js
 
 # Combine main.js, partners.json, kiva_sort.js
 # If $(DEBUG_MODE) is defined, then don't compress (ie: make DEBUG_MODE=yes)
-$(DST_JSDIR)/combined.js: $(SRC_JSDIR)/main.js $(SRC_JSDIR)/ks/kiva_sort.js \
+$(DST_JSDIR)/combined.js: $(SRC_JSDIR)/main.js node_modules/jquery-kivasort/kiva_sort.js \
     | $(DST_JSDIR)
 	$(PP) $(PPFLAGS) $< > $@
 	$(if $(DEBUG_MODE),,$(UGLIFY) $@ $(UGLYFLAGS) -o $@)
