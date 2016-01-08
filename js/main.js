@@ -26,7 +26,6 @@ $(document).ready(function () {
         }
     });
 
-
     kivaTable.on('init.dt', function(e, s, b) {
         // Keep reference to DataTable
         dTable = kivaTable.DataTable();
@@ -34,6 +33,13 @@ $(document).ready(function () {
         // Initially hide/show incomplete rows based on HTML
         toggleIncomplete($('#hideIncomplete').is(':checked'));
         toggleInactive($('#hideInactive').is(':checked'));
+    });
+
+    kivaTable.on('preXhr.dt', function(e, s, b) {
+        // Style the loading row
+        var loading = $('#loadingrow');
+        var datadiv = $('#data');
+        loading.css('width', datadiv.width());
     });
 
     kivaTable.makeKivaTable({
@@ -47,7 +53,7 @@ $(document).ready(function () {
             buttons: {
                 pageLength: { '-1': "Show all rows", _: "Show %d rows/page" }
             },
-            loadingRecords: '<div class="ui-widget ui-state-default">Loading... <img src="ajax-loader.gif"></div>'
+            loadingRecords: '<div id="loadingrow" class="ui-widget ui-state-default">Loading... <img src="ajax-loader.gif"></div>'
         },
         buttons: [ 'pageLength',
             'colvis',  
