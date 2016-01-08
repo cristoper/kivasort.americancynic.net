@@ -15,8 +15,8 @@ UGLIFY := node_modules/uglify-js/bin/uglifyjs
 UGLYFLAGS := --compress --mangle
 
 CPPFLAGS := -x c -w -P
-# To disable use of partners.json use:
-#CPPFLAGS := -x c -w -P -Dno_json
+# To enable use of pre-fetched partners.json use:
+#CPPFLAGS := -x c -w -P -Dno_ajax
 
 all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css
 

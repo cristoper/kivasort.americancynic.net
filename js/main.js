@@ -59,9 +59,9 @@ $(document).ready(function () {
                 ]
             }],
 
-            /** To NOT use the cached json file, include -Dno_json in the
+            /** To NOT use the cached json file, include -Dno_ajax in the
              * Makefiles CPPFLAGS */
-            #ifndef no_json
+            #ifdef no_ajax
             ks_partnerData:
                 #include "partners.json"
             ,
