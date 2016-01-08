@@ -1,4 +1,5 @@
-#include "ks/kiva_sort.js"
+//changequote(`<<', `>>')
+undivert(<<js/ks/kiva_sort.js>>)
 $(document).ready(function () {
 
     var kivaTable = $('#KivaSort');
@@ -65,13 +66,9 @@ $(document).ready(function () {
                 ]
             }],
 
-            /** To NOT use the cached json file, include -Dno_ajax in the
-             * Makefiles CPPFLAGS */
-            #ifdef no_ajax
-            ks_partnerData:
-                #include "partners.json"
-            ,
-            #endif
+            /** To NOT use the cached json file, include '-Dno_ajax' in the
+             * Makefile PPFLAGS */
+            ifdef(<<no_ajax>>, <<ks_partnerData: undivert(js/partners.json),>>)
 
 
         /* Sort by Portfolio Yield, then Profitability */

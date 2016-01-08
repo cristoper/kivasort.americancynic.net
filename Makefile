@@ -14,20 +14,21 @@ CSS_FILES := $(wildcard $(SRC_CSSDIR)/*.css)
 UGLIFY := node_modules/uglify-js/bin/uglifyjs
 UGLYFLAGS := --compress --mangle
 
-CPPFLAGS := -x c -w -P
+PP := m4
+PPFLAGS :=
 # To enable use of pre-fetched partners.json use:
-#CPPFLAGS := -x c -w -P -Dno_ajax
+#CPPFLAGS := -Dno_ajax
 
 all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css
 
 $(OUTPUTDIR)/index.html: index.html $(DST_JSDIR)/combined.js
-	$(CPP) $(CPPFLAGS) $< -o $@
+	$(PP) $(PPFLAGS) $< > $@
 
 # Combine main.js, partners.json, kiva_sort.js
 # If $(DEBUG_MODE) is defined, then don't compress (ie: make DEBUG_MODE=yes)
 $(DST_JSDIR)/combined.js: $(SRC_JSDIR)/main.js $(SRC_JSDIR)/ks/kiva_sort.js \
     | $(DST_JSDIR)
-	$(CPP) $(CPPFLAGS) $< -o $@
+	$(PP) $(PPFLAGS) $< > $@
 	$(if $(DEBUG_MODE),,$(UGLIFY) $@ $(UGLYFLAGS) -o $@)
 
 $(DST_CSSDIR)/main.css: $(SRC_CSSDIR)/main.css | $(DST_CSSDIR)
