@@ -38,11 +38,17 @@ $(document).ready(function () {
         toggleInactive($('#hideInactive').is(':checked'));
     });
 
+    kivaTable.on('xhr.dt', function() {
+        $('#loading').hide();
+    });
+
     kivaTable.on('preXhr.dt', function(e, s, b) {
         // Style the loading row
-        var loading = $('#loadingrow');
+        var loading = $('#loading');
+        var loadrow = $('#loadingrow');
         var datadiv = $('#data');
-        loading.css('width', datadiv.width());
+        loadrow.css('width', datadiv.width());
+        datadiv.append(loading.show());
     });
 
     kivaTable.makeKivaTable({
@@ -56,7 +62,7 @@ $(document).ready(function () {
             buttons: {
                 pageLength: { '-1': "Show all rows", _: "Show %d rows/page" }
             },
-            loadingRecords: '<div id="loadingrow" class="ui-widget ui-state-default">Loading... <img src="ajax-loader.gif"></div>'
+            loadingRecords: '<div id="loadingrow">...</a>'
         },
         buttons: [ 'pageLength',
             'colvis',  
@@ -66,7 +72,7 @@ $(document).ready(function () {
                     { extend: 'csv', text: 'Download as CSV'},
                     { extend: 'json', text: 'View source JSON' }
                 ]
-            }],
+            }, 'reload'],
 
             /** To NOT use the cached json file, include '-Dno_ajax' in the
              * Makefile PPFLAGS */
