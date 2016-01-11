@@ -13,6 +13,6 @@ REV=$(git rev-parse @{-1})
 MESSAGE="Deploying from ${PREV_BRANCH} rev ${REV}"
 
 cp -r output/* ./
-git commit --all --message "'${MESSAGE}'"
+git commit --all --message "${MESSAGE}"
 echo git push origin gh-pages
 git checkout ${PREV_BRANCH}
