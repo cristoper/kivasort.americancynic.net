@@ -21,12 +21,12 @@ all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css $(DST_JSDI
 deploy-pages: all
 	sh deploy-to-pages.sh
 
-$(OUTPUTDIR)/index.html: index.html $(DST_JSDIR)/combined.js
+$(OUTPUTDIR)/index.html: index.html $(SRC_JSDIR)/combined.js
 	$(PP) $(PPFLAGS) $< > $@
 
 # Combine main.js, partners.json, kiva_sort.js
 # If $(DEBUG_MODE) is defined, then don't compress (ie: make DEBUG_MODE=yes)
-$(DST_JSDIR)/combined.js: $(SRC_JSDIR)/main.js $(SRC_JSDIR)/ks/kiva_sort.js \
+$(SRC_JSDIR)/combined.js: $(SRC_JSDIR)/main.js $(SRC_JSDIR)/ks/kiva_sort.js \
     | $(DST_JSDIR)
 	$(PP) $(PPFLAGS) $< > $@
 	$(if $(DEBUG_MODE),,$(UGLIFY) $@ $(UGLYFLAGS) -o $@)
@@ -44,11 +44,12 @@ $(DST_CSSDIR)/main.css: $(SRC_CSSDIR)/main.css | $(DST_CSSDIR)
 $(OUTPUTDIR) $(DST_JSDIR) $(DST_CSSDIR):
 	test -d $@ || mkdir $@
 
-clean:
-	-rm -r $(OUTPUTDIR)/*
-
 # Copy everything in root/ to output/
 $(DST_ROOT_FILES): output/%: root/%|$(OUTPUTDIR)
 	cp $< $(OUTPUTDIR)
+
+clean:
+	-rm -r $(OUTPUTDIR)/*
+	-rm $(SRC_JSDIR)/combined.js
 
 .PHONY: all clean javascript css deploy-pages
