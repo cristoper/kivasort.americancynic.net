@@ -18,6 +18,9 @@ PPFLAGS += $(if $(NO_AJAX), -Dno_ajax)
 
 all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css $(DST_JSDIR)/partners.json
 
+deploy-pages: all
+	sh deploy-to-pages.sh
+
 $(OUTPUTDIR)/index.html: index.html $(DST_JSDIR)/combined.js
 	$(PP) $(PPFLAGS) $< > $@
 
@@ -48,4 +51,4 @@ clean:
 $(DST_ROOT_FILES): output/%: root/%|$(OUTPUTDIR)
 	cp $< $(OUTPUTDIR)
 
-.PHONY: all clean javascript css
+.PHONY: all clean javascript css deploy-pages
