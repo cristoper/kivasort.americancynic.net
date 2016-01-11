@@ -10,7 +10,6 @@ REV=$(git rev-parse @{-1})
 
 MESSAGE="Deploying from ${PREV_BRANCH} rev ${REV}"
 
-# copy new output files over gh-pages files
 cp -r output/* ./
 git commit --all --message "'${MESSAGE}'"
 echo git push origin gh-pages
