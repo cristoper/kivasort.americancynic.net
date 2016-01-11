@@ -73,18 +73,34 @@
         <h3>See also</h3>
         <ul>
             <li><a href='http://www.kiva.org/partners'>http://www.kiva.org/partners</a></li>
-            <li><a href='http://kivalens.org/'>KivaLens.org</a> - KivaLens has now been rewritten in JavaScript and runs well in all modern browsers. It is a much more complicated app than KivaSort, geared towards heavy lenders who wish to carefully vet their borrowers.</li>
+            <li><a href='http://kivalens.org/'>KivaLens.org</a> - KivaLens has now been rewritten in JavaScript and runs well in all modern browsers. It is a much more complicated app than KivaSort, geared toward heavy lenders who wish to carefully vet their borrowers.</li>
         </ul>
         <h2>How to use KivaSort</h2>
         <ul>
             <li>Click column header to sort in ascending order. Click again to sort in descending order.</li>
             <li>Hold down shift and click column headers to sort by multiple columns simultaneously.</li>
             <li>Drag column headers to change their order.</li>
-            <li>Columns that are hidden or do not fit on the screen can be displayed as sub-rows by clicking the green icon in the first column. (Only columns that fit on the screen can be used for sorting, so KivaSort is more suited to a big monitor.)</li>
+            <li>Columns that are hidden or do not fit on the screen can be displayed as sub-rows by clicking the green icon in the first column.</li>
             <li>Type a [partial] word in the "Search" box to filter the table down to only rows containing the search term in any of their columns.</li>
             <li>Uncheck the "Hide inactive field partners" box to show field partners who are currently inactive or paused.</li>
             <li>Uncheck the "Hide field partners with incomplete data" to show field partners who do not have some data (such as Portfolio Rate). Missing data is displayed as "-" in the table.</li>
         </ul>
+        <p>The buttons across the top can be used to manage the table:
+        <dl>
+            <dt>"Show X rows/page"</dt>
+            <dd>Set how many rows to show per page.</dd>
+
+            <dt>"Column Visibility"</dt>
+            <dd>Set which columns are visible across the top of the screen. Hide columns to make the table more manageable. The data from hidden columns can still be seen by clicking the green button in each column of the first row. Columns which cannot fit on the screen are automatically hidden. Only visible columns may be used for sorting, so use the "Column Visibility" button to make sure the columns you care about fit at the top of the table.</dd>
+
+            <dt>"Export"</dt>
+            <dd>This button allows you to copy the table data to the clipboard or download it as a CSV-formatted file. All columns will be included in the exported data, but rows which have been filtered out will not be included. This button also provides the option to "View source JSON" which will open a new window/tab containing the cleaned-up data sent by the Kiva web service.</dd>
+
+            <dt>"Reload"</dt>
+            <dd>This button will re-fetch the most current data from Kiva and refresh the table's contents with it.</dd>
+        </dl>
+        </p>
+
         <h2>Open Source</h2>
         <p>The KivaSort.org web site is completely open source. If you'd like to view or contribute to the project, please take a look at the public git repository: <a href='https://github.com/cristoper/kivasort.org'>https://github.com/cristoper/kivasort.org</a>
         <p>The JavaScript which runs KivaSort depends on two open-source JQuery plugins:
