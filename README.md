@@ -49,6 +49,8 @@ $ make deploy-pages
 
 Feel free to use the [project issues tracker](https://github.com/cristoper/kivasort.org/issues) to submit not only bugs and typos, but any suggestions or feature requests.
 
+If you'd like to contribute to my work
+
 If you'd like to contribute code or documentation you can either open an issue and attach a patch, or if you use Github:
 
 1. Fork this repository
@@ -56,6 +58,8 @@ If you'd like to contribute code or documentation you can either open an issue a
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
+
+For other ways to contribute to this project, see the [support tab of KivaSort.org](http://www.kivasort.org/#support). Thank you!
 
 ## What's to be done
 
