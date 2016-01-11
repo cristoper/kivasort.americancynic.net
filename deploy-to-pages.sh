@@ -6,7 +6,7 @@ set -o nounset
 ORIG_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 # get revision of previously checked out branch
-REV=$(git rev-parse @{-1})
+REV=$(git rev-parse @{0})
 
 MESSAGE="Deploying from ${ORIG_BRANCH} rev ${REV}"
 
