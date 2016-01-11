@@ -16,7 +16,7 @@ PPFLAGS := $(if $(DEBUG_MODE), -DDEBUG_MODE)
 # To enable use of pre-fetched partners.json use:
 #PPFLAGS += -Dno_ajax
 
-all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css
+all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css $(DST_JSDIR)/partners.json
 
 $(OUTPUTDIR)/index.html: index.html $(DST_JSDIR)/combined.js
 	$(PP) $(PPFLAGS) $< > $@
@@ -27,6 +27,12 @@ $(DST_JSDIR)/combined.js: $(SRC_JSDIR)/main.js $(SRC_JSDIR)/ks/kiva_sort.js \
     | $(DST_JSDIR)
 	$(PP) $(PPFLAGS) $< > $@
 	$(if $(DEBUG_MODE),,$(UGLIFY) $@ $(UGLYFLAGS) -o $@)
+
+$(SRC_JSDIR)/partners.json:
+	$(SRC_JSDIR)/ks/fetchkivajson.js > $@
+
+$(DST_JSDIR)/partners.json: $(SRC_JSDIR)/partners.json
+	cp $< $@
 
 $(DST_CSSDIR)/main.css: $(SRC_CSSDIR)/main.css | $(DST_CSSDIR)
 	cp $< $@

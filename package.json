@@ -2,9 +2,9 @@
   "name": "KivaSort.org",
   "version": "1.0.0",
   "description": "A simple web app which provides a table of Kiva's field partners which may be sorted and filtered.",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "jquery": "^2.2.0",
     "jsdom": "^7.2.2",
     "uglify-js": "^2.6.1",
     "xmlhttprequest": "^1.8.0"
