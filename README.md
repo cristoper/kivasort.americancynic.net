@@ -67,6 +67,10 @@ For other ways to contribute to this project, see the [support tab of KivaSort.o
 
 It might be both faster and more reliable if we included local copies of the dependencies (jQuery, jQuery-ui, Datatables) instead of relying on the Datatables CDN for everything.
 
+### Better Docs
+
+The 'About' tab could use better instructions for using the site. The HTML is getting a little unwieldy, it might be worth switching to markdown or similar.
+
 ### More filtering
 
 Range sliders for filtering at least some columns (Portfolio Yield, Profitability, etc) would be nice.
