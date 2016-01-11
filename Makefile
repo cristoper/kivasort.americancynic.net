@@ -12,9 +12,9 @@ UGLIFY := node_modules/uglify-js/bin/uglifyjs
 UGLYFLAGS := --compress --mangle
 
 PP := m4
-PPFLAGS :=
+PPFLAGS := $(if $(DEBUG_MODE), -DDEBUG_MODE)
 # To enable use of pre-fetched partners.json use:
-#CPPFLAGS := -Dno_ajax
+#PPFLAGS += -Dno_ajax
 
 all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css
 

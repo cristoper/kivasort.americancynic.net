@@ -13,9 +13,12 @@
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0,r-2.0.0/datatables.min.css"/>
+ifdef(`DEBUG_MODE',
+`<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0,r-2.0.0/datatables.css"/>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/redmond/jquery-ui.css" />',
+`<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0,r-2.0.0/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/redmond/jquery-ui.min.css" />')
 
-<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/redmond/jquery-ui.css" />
 
 </head>
 <body class='ui-widget'>
@@ -64,7 +67,7 @@
         <p>A table of <a href='http://kiva.com/'>Kiva's</a> field partners (the microfinance organizations which administer loans made possible by Kiva) which may be sorted and filtered.
         <h2>Motivation</h2>
         <p>Many of Kiva's field partners collect interest on the loans they disburse. The rates of interest vary, but they are sometimes very high despite the fact that much of the risk and principal cost is offloaded to Kiva's generous users. Identifying field partners with high (or low) interest would be easiest if they could all be sorted by their "<a href='http://www.kiva.org/help/borrowingCostComparison#AveragePartnerPortfolioYield'>Portfolio Yield</a>" (average interest rates) and "<a href='http://www.kiva.org/help/borrowingCostComparison#AveragePartnerReturnOnAssets'>Profitability</a>" (return on assets) metrics. The higher those rates, the higher the interest will tend to be on loans from those lenders. The ability to so sort the list of Kiva's field partners is one of the main motivating forces behind the creation of KivaSort.
-        <p>Kiva does not provide such a table on their own site, but they do provide <a href='http://build.kiva.org/'>nice APIs</a> for their various services. Another third-party website called <a href='http://www.kivalens.org/'>KivaLens</a> exists for sorting field partners. However, it requires Microsoft's Silverlight plugin to run, and so is not easy to run on many browsers. KivaSort is written in JavaScript, and therefore supports more operating systems and default browser installations.
+        <p>Kiva provides a table of field partners on their web site (<a href='http://www.kiva.org/partners'>http://www.kiva.org/partners</a>), but it has limited sorting options (it cannot be sorted by portfolio yield, for example). Kiva does provide <a href='http://build.kiva.org/'>nice APIs</a> for their various services. Another third-party website called <a href='http://www.kivalens.org/'>KivaLens</a> exists for filtering field partners. However, until very recently (July 2015) it required Microsoft's Silverlight plugin and did not run on many browsers. KivaLens has now been rewritten in Javascript and runs well in all modern browsers. 
         <p>By default, KivaSort lists field partners ordered primarily by "Portfolio Yield" so that field partners with low interest rates will be near the top. But note that expensive loans do not necessarily indicate usurious loans (at least not more usurious than other lenders); some locations have legitimately high costs associated with administering loans due to such factors as social instability, inflation, and lack of infrastructure. In that respect, a high "Profitability" metric may be the best way to identify highly exploitative lenders -- although a consistently negative "Profitability" may indicate a non-sustainable field partner.
         <h3>Further reading</h3>
         <ul>
@@ -113,15 +116,15 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0/datatables.min.js"></script>
-
-    <!-- To debug, comment out the minified <style> tag above, and uncomment this one: -->
-    <!-- <script type="text/javascript" src="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0/datatables.js"></script> -->
+    ifdef(`DEBUG_MODE',
+    `<script type="text/javascript" src="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0/datatables.js"></script'>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.js"></script>,
+    `<script type="text/javascript" src="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0/datatables.min.js"></script'>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>)
 
     <script type="text/javascript">
         undivert(`output/js/combined.js')
     </script>
 
-    <script type="text/javascript" src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
 </body>
 </html>
