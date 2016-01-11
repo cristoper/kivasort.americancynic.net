@@ -74,8 +74,7 @@ $(document).ready(function () {
                 ]
             }, 'reload'],
 
-            /** To NOT use the cached json file, include '-Dno_ajax' in the
-             * Makefile PPFLAGS */
+            /** To NOT use the cached json file, run make with 'NO_AJAX=y' */
             ifdef(<<no_ajax>>, <<ks_partnerData: undivert(js/partners.json),>>)
 
 

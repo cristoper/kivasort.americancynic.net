@@ -14,7 +14,7 @@ UGLYFLAGS := --compress --mangle
 PP := m4
 PPFLAGS := $(if $(DEBUG_MODE), -DDEBUG_MODE)
 # To enable use of pre-fetched partners.json use:
-#PPFLAGS += -Dno_ajax
+PPFLAGS += $(if $(NO_AJAX), -Dno_ajax)
 
 all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css $(DST_JSDIR)/partners.json
 
@@ -32,7 +32,8 @@ $(SRC_JSDIR)/partners.json:
 	$(SRC_JSDIR)/ks/fetchkivajson.js > $@
 
 $(DST_JSDIR)/partners.json: $(SRC_JSDIR)/partners.json
-	cp $< $@
+	# Only copy to output/ if no_ajax is specified
+	$(if $(NO_AJAX), cp $< $@)
 
 $(DST_CSSDIR)/main.css: $(SRC_CSSDIR)/main.css | $(DST_CSSDIR)
 	cp $< $@
