@@ -121,6 +121,10 @@ td {
     word-wrap: break-word;
 }
 
+dt {
+    font-weight: bold;
+}
+
 #tabs {
     overflow: hidden;
     display:none;
