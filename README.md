@@ -61,11 +61,7 @@ If you'd like to contribute code or documentation you can either open an issue a
 
 ### Optimization
 
-Currently KivaSort.org makes a great many HTTP requests for separate CSS and JavaScript files from CDNs. It also fetches and parses a lot of JavaScript it never executes. We should gather only the required JavaScript and styles into only a few minified files.
-
-### Style
-
-KivaSort.org uses a default JQueryUI theme right now. I'm sure somebody can create a more custom theme that looks better and is less CSS...
+It might be both faster and more reliable if we included local copies of the dependencies (jQuery, jQuery-ui, Datatables) instead of relying on the Datatables CDN for everything.
 
 ### More filtering
 
