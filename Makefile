@@ -35,7 +35,7 @@ $(SRC_JSDIR)/partners.json:
 	$(SRC_JSDIR)/ks/fetchkivajson.js > $@
 
 $(DST_JSDIR)/partners.json: $(SRC_JSDIR)/partners.json
-	# Only copy to output/ if no_ajax is specified
+	@# Only copy to output/ if no_ajax is specified
 	$(if $(NO_AJAX), cp $< $@)
 
 $(DST_CSSDIR)/main.css: $(SRC_CSSDIR)/main.css | $(DST_CSSDIR)
