@@ -13,10 +13,10 @@
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/pepper-grinder/jquery-ui.css">
-<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css">
-<link rel="stylesheet" href="//cdn.datatables.net/colvis/1.1.1/css/dataTables.colVis.css">
-<link rel="stylesheet" href="//cdn.datatables.net/responsive/1.0.3/css/dataTables.responsive.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0,r-2.0.0/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/redmond/jquery-ui.min.css" />
+
+
 </head>
 <body class='ui-widget'>
 <!--[if lt IE 7]>
@@ -24,8 +24,9 @@
         <![endif]-->
 
 <!-- Add your site or application content here -->
-<h1>KivaSort</h1>
 
+<h1>KivaSort</h1>
+<div class="ui-widget ui-state-default" id="loading"><p>Loading table &nbsp; <img alt='...' src='./ajax-loader.gif'></p></div>
 <div id="tabs">
     <ul>
         <li id='fpd_link'><a href="#data">Field Partner Data</a></li>
@@ -35,7 +36,7 @@
     <div id="data" class='tab_content'>
         <label><input id='hideInactive' type='checkbox' value='doHide' checked />Hide inactive field partners</label><br/>
         <label><input id='hideIncomplete' type='checkbox' value='doHide' checked />Hide field partners with incomplete data</label><br/>
-        <table id="KivaSort" class="responsive">
+        <table id="KivaSort" class="display no-wrap" style="width: 100%">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -63,22 +64,42 @@
         <p>A table of <a href='http://kiva.com/'>Kiva's</a> field partners (the microfinance organizations which administer loans made possible by Kiva) which may be sorted and filtered.
         <h2>Motivation</h2>
         <p>Many of Kiva's field partners collect interest on the loans they disburse. The rates of interest vary, but they are sometimes very high despite the fact that much of the risk and principal cost is offloaded to Kiva's generous users. Identifying field partners with high (or low) interest would be easiest if they could all be sorted by their "<a href='http://www.kiva.org/help/borrowingCostComparison#AveragePartnerPortfolioYield'>Portfolio Yield</a>" (average interest rates) and "<a href='http://www.kiva.org/help/borrowingCostComparison#AveragePartnerReturnOnAssets'>Profitability</a>" (return on assets) metrics. The higher those rates, the higher the interest will tend to be on loans from those lenders. The ability to so sort the list of Kiva's field partners is one of the main motivating forces behind the creation of KivaSort.
-        <p>Kiva does not provide such a table on their own site, but they do provide <a href='http://build.kiva.org/'>nice APIs</a> for their various services. Another third-party website called <a href='http://www.kivalens.org/'>KivaLens</a> exists for sorting field partners. However, it requires Microsoft's Silverlight plugin to run, and so is not easy to run on many browsers. KivaSort is written in JavaScript, and therefore supports more operating systems and default browser installations.
+        <p>Kiva provides a table of field partners on their web site, but it has limited sorting options (it cannot be sorted by portfolio yield, for example). Kiva does provide <a href='http://build.kiva.org/'>nice APIs</a> for their various services, which KivaSort uses. Another third-party website called <a href='http://www.kivalens.org/'>KivaLens.org</a> exists for filtering field partners. However, until very recently (July 2015) it required Microsoft's Silverlight plugin and did not run on many browsers.
         <p>By default, KivaSort lists field partners ordered primarily by "Portfolio Yield" so that field partners with low interest rates will be near the top. But note that expensive loans do not necessarily indicate usurious loans (at least not more usurious than other lenders); some locations have legitimately high costs associated with administering loans due to such factors as social instability, inflation, and lack of infrastructure. In that respect, a high "Profitability" metric may be the best way to identify highly exploitative lenders -- although a consistently negative "Profitability" may indicate a non-sustainable field partner.
         <h3>Further reading</h3>
         <ul>
             <li><a href='http://blog.microfinancetransparency.com/whats-wrong-with-kivas-portfolio-yield-statistic/' title='What’s Wrong With Kiva’s Portfolio Yield Statistic?'>"What’s Wrong With Kiva’s Portfolio Yield Statistic?" by Hugh Sinclair</a></li>
         </ul>
+        <h3>See also</h3>
+        <ul>
+            <li><a href='http://www.kiva.org/partners'>http://www.kiva.org/partners</a></li>
+            <li><a href='http://kivalens.org/'>KivaLens.org</a> - KivaLens has now been rewritten in JavaScript and runs well in all modern browsers. It is a much more complicated app than KivaSort, geared toward heavy lenders who wish to carefully vet their borrowers.</li>
+        </ul>
         <h2>How to use KivaSort</h2>
         <ul>
             <li>Click column header to sort in ascending order. Click again to sort in descending order.</li>
             <li>Hold down shift and click column headers to sort by multiple columns simultaneously.</li>
-            <li>Click the "Show / hide columns" button at the top right of the table to select which columns are visible (and may therefore be used to sort the table).</li>
+            <li>Drag column headers to change their order.</li>
             <li>Columns that are hidden or do not fit on the screen can be displayed as sub-rows by clicking the green icon in the first column.</li>
             <li>Type a [partial] word in the "Search" box to filter the table down to only rows containing the search term in any of their columns.</li>
             <li>Uncheck the "Hide inactive field partners" box to show field partners who are currently inactive or paused.</li>
             <li>Uncheck the "Hide field partners with incomplete data" to show field partners who do not have some data (such as Portfolio Rate). Missing data is displayed as "-" in the table.</li>
         </ul>
+        <p>The buttons across the top can be used to manage the table:</p>
+        <dl>
+            <dt>"Show X rows/page"</dt>
+            <dd>Set how many rows to show per page.</dd>
+
+            <dt>"Column Visibility"</dt>
+            <dd>Set which columns are visible across the top of the screen. Hide columns to make the table more manageable. The data from hidden columns can still be seen by clicking the green button in each column of the first row. Columns which cannot fit on the screen are automatically hidden. Only visible columns may be used for sorting, so use the "Column Visibility" button to make sure the columns you care about fit at the top of the table.</dd>
+
+            <dt>"Export"</dt>
+            <dd>This button allows you to copy the table data to the clipboard or download it as a CSV-formatted file. All columns will be included in the exported data, but rows which have been filtered out will not be included. This button also provides the option to "View source JSON" which will open a new window/tab containing the cleaned-up data sent by the Kiva web service.</dd>
+
+            <dt>"Reload"</dt>
+            <dd>This button will re-fetch the most current data from Kiva and refresh the table's contents with it.</dd>
+        </dl>
+
         <h2>Open Source</h2>
         <p>The KivaSort.org web site is completely open source. If you'd like to view or contribute to the project, please take a look at the public git repository: <a href='https://github.com/cristoper/kivasort.org'>https://github.com/cristoper/kivasort.org</a>
         <p>The JavaScript which runs KivaSort depends on two open-source JQuery plugins:
@@ -90,11 +111,10 @@
         <p>KivaSort.org and the KivaSort JQuery plugin were created and are maintained by <a href='https://github.com/cristoper'>chris burkhardt</a> &lt;<a href='mailto:chris@mretc.net'>chris@mretc.net</a>&gt;.
     </div>
     <div id="support" class="tab_content">
-        <p>If you found KivaSort helpful, please consider making a small contribution to further my work on this and similar projects.
-        <h3>Personal gifts</h3>
+        <p>I write small, Free software. If you found KivaSort helpful, please consider making a small contribution to further my work on this and similar projects.
+        <h3>Direct donations</h3>
         <ul>
-            <li>Support my work via <a href='https://gratipay.com/about/'>Gratipay</a>: <script data-gratipay-username="cristoper" data-gratipay-widget="button" src="//grtp.co/v1.js"></script></li>
-            <li>Bitcoin: <a href='bitcoin:1CtPNvTDnk2k2V5MS22TvFhupiSdfyEkfn?label=KivaSort-donation'>1CtPNvTDnk2k2V5MS22TvFhupiSdfyEkfn</a></li>
+            <li>Support my work via Bitcoin: <a href='bitcoin:1CtPNvTDnk2k2V5MS22TvFhupiSdfyEkfn?label=KivaSort-donation'>1CtPNvTDnk2k2V5MS22TvFhupiSdfyEkfn</a></li>
             <li>or PayPal: <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=UZXMBS28TD67A' title='Make donation to author via PayPal'>donate to cris@mretc.net</a></li>
         </ul>
             <h3>Kiva</h3>
@@ -113,26 +133,12 @@
         </div>
     </div>
 
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/colvis/1.1.1/js/dataTables.colVis.min.js"></script>
-    <script src="//cdn.datatables.net/responsive/1.0.3/js/dataTables.responsive.js"></script>
-    <script src="//cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
 
-    <script type="text/javascript" charset="utf-8" src="js/ks/kiva_sort.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
-
-    <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
- (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
- m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-29080257-2', 'auto');
-ga('send', 'pageview');
-
+    <script type="text/javascript">
+        !function(e,t,a,n){"use strict";function r(t,a,n,r){var i=r.settings.nTable,c=i.columns[r.col],d=n[c];if("sort"==a||"type"==a)return d;if(void 0===d||d==h)return v;switch(c){case"id":return e("<a></a>",{text:d,href:u+d})[0].outerHTML;case"loans_posted":return d.toLocaleString();case"start_date":if(d){var s=new Date(d),l=e("<time></time>",{datetime:d,text:s.toLocaleDateString()});return l[0].outerHTML}return v;case"total_amount_raised":return"$"+d.toLocaleString()}return-1!=e.inArray(c,b)?d.toFixed(2)+"%":-1!=e.inArray(c,m)?o(n,c):d}function o(t,a){if(t[a]){var n={text:t[a]};t.url&&(n.href=t.url);var r=e("<a></a>",n);return r[0].outerHTML}return v}function i(t){return t.find("th").map(function(){var t=e(this).data("title")||e.trim(e(this).text());return t.replace(/\s/g,"_").toLowerCase()}).get()}function c(t,a,n){var r=new e.fn.dataTable.Api(n),o=r.table().node();o.opts.ks_partnerData?(f(o.opts.ks_partnerData),y.fetchedJSON.data=o.opts.ks_partnerData.partners,a(y.fetchedJSON)):void 0===y.didAJAX&&(y.didAJAX=!0,d(1)),y.fetchedJSON.done(function(e){a({data:e})})}function d(t){return(!t||1>t)&&(t=1),e.getJSON(p,{page:t,app_id:y.app_id}).done(l).fail(s),y.fetchedJSON}function s(t,a,r){y.fetchedJSON.data=[],y.fetchedJSON.reject(),"undefined"!=typeof n&&console.log("Error fetching JSON: "+a),e.each(y.tables,function(t,a){var n=e(a).find("td.dataTables_empty").first();n.html("<span class='error'>Error fetching field partner data from Kiva.org.</span>");var r=e.parseHTML("<a href='#' title='Click to retry fetching data from Kiva'>Try again</a>");e(r).click(function(t){return e(a).reloadKivaTable(),!1}),n.append(r)})}function l(t){e.extend(y.fetchedJSON.data,t);var a=t.paging.page;t.paging.pages>a?y.fetchKivaPartners(a+1):y.fetchedJSON.data&&(f(y.fetchedJSON.data),y.fetchedJSON.resolve(y.fetchedJSON.data.partners))}function f(t){t.partners.forEach(function(t){_.forEach(function(a){e.isNumeric(t[a])||(t[a]=h)}),t.charges_fees_and_interest||(t.portfolio_yield=0),g.forEach(function(e){t[e]||(t[e]="")}),t.country=t.countries[0].name||t.countries[0].iso_code})}var u="http://www.kiva.org/partners/",p="http://api.kivaws.org/v1/partners.json",h=999,v="-",_=["average_loan_size_percent_per_capita_income","currency_exchange_loss_rate","default_rate","delinquency_rate","id","loans_at_risk_rate","loans_posted","portfolio_yield","profitability","total_amount_raised"],b=["average_loan_size_percent_per_capita_income","currency_exchange_loss_rate","default_rate","delinquency_rate","loans_at_risk_rate","portfolio_yield","profitability"],g=["due_diligence_type","name","rating","status","url"],m=["name","url"],w={ajax:c,columnDefs:[{targets:"_all",render:r}]};"undefined"!=typeof e.fn.dataTable.ext.buttons&&(e.fn.dataTable.ext.buttons.json={className:"buttons-json buttons-html5",available:function(){return a.Blob},text:"JSON",action:function(e,t,n,r){var o=y.fetchedJSON.data,i=JSON.stringify({partners:o}),c=new Blob([i],{type:"application/json"}),d=URL.createObjectURL(c);a.open(d)}},e.fn.dataTable.ext.buttons.reload={className:"buttons-reload",text:"Reload",action:function(t,a,n,r){var o=a.table().node();o.opts.ks_partnerData=null,e(o).reloadKivaTable()}});var y={};y.tables=[],y.fetchedJSON=new e.Deferred,y.fetchedJSON.data={},e.fn.makeKivaTable=function(t){var t=t||{};return y.app_id=t.ks_appID,e.merge(y.tables,this),this.filter("table").each(function(a,n){var r=(e(n),t.columnDefs);void 0==r&&(r=[]),e.merge(w.columnDefs,r),delete t.columnDefs,n.opts={},e.extend(!0,n.opts,w,t),n.columns=i(e(n)),e(n).DataTable(n.opts)})},e.fn.reloadKivaTable=function(){return delete y.didAJAX,y.fetchedJSON=new e.Deferred,y.fetchedJSON.data={},this.each(function(t,a){var n=e(this).DataTable();n.clear().draw(),n.ajax.reload()})},e.fn.removeKivaTable=function(){return this.each(function(t,a){y.tables=e.grep(y.tables,function(e){return e!=a}),e(a).DataTable().clear().destroy()})},"undefined"!=typeof n&&(n.fetchKivaPartners=d)}(jQuery,document,window,"undefined"==typeof exports?void 0:exports),$(document).ready(function(){function e(e){e?a.columns("th").search("^(?!-$)",!0,!1).draw():a.columns("th").search(".",!0).draw()}function t(e){e?a.columns("#statusCol").search("^active",!0).draw():a.columns("#statusCol").search(".",!0).draw()}window.onpopstate=function(e){var t=$(window.location.hash);""==window.location.hash&&(t=$("#data"));var a=t.index()-1;$("#tabs").tabs("option","active",a)};var a,n=$("#KivaSort");$("#tabs").tabs({activate:function(e,t){var n=t.newPanel.attr("id");if(e.originalEvent&&"click"==e.originalEvent.type)if(history.pushState)history.pushState(null,null,"#"+n);else{var r=$("html,body").scrollTop();window.location.hash=n,$("html,body").scrollTop(r)}t.newTab.is($("#fpd_link"))?(a.responsive.recalc(),a.fixedHeader.enable(!0)):a.fixedHeader.enable(!1)},create:function(){$("#tabs").show(),$("#loading").hide()}}),n.on("init.dt",function(r,o,i){a=n.DataTable(),e($("#hideIncomplete").is(":checked")),t($("#hideInactive").is(":checked"))}),n.on("xhr.dt",function(){$("#loading").hide()}),n.on("preXhr.dt",function(e,t,a){var n=$("#loading"),r=$("#loadingrow"),o=$("#data");r.css("width",o.width()),o.append(n.show())}),n.makeKivaTable({deferRender:!0,responsive:!0,fixedHeader:!0,lengthMenu:[[10,25,50,-1],[10,25,50,"All"]],dom:"Bftip",colReorder:!0,language:{buttons:{pageLength:{"-1":"Show all rows",_:"Show %d rows/page"}},loadingRecords:'<div id="loadingrow">...</a>'},buttons:["pageLength","colvis",{extend:"collection",text:"Export",buttons:[{extend:"copy",text:"Copy to Clipboard"},{extend:"csv",text:"Download as CSV"},{extend:"json",text:"View source JSON"}]},"reload"],order:[[2,"asc"],[3,"asc"],[4,"desc"],[5,"desc"]]}),$("#hideIncomplete").click(function(){e(this.checked)}),$("#hideInactive").click(function(){t(this.checked)})});
     </script>
 
-    </body>
-    </html>
+</body>
+</html>
