@@ -13,7 +13,7 @@
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 <link rel="stylesheet" href="css/main.css">
-ifdef(`DEBUG_MODE',
+m4_ifdef(`DEBUG_MODE',
 `<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0,r-2.0.0/datatables.css"/>
 <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/redmond/jquery-ui.css" />',
 `<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0,r-2.0.0/datatables.min.css"/>
@@ -137,14 +137,14 @@ ifdef(`DEBUG_MODE',
         </div>
     </div>
 
-    ifdef(`DEBUG_MODE',
+    m4_ifdef(`DEBUG_MODE',
     `<script type="text/javascript" src="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0/datatables.js"></script'>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.js"></script>,
     `<script type="text/javascript" src="https://cdn.datatables.net/s/ju-1.11.4/jqc-1.11.3,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-html5-1.1.0,cr-1.3.0,fh-3.1.0/datatables.min.js"></script'>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>)
 
     <script type="text/javascript">
-        undivert(`js/combined.js')
+        m4_undivert(`js/combined.js')
     </script>
 
 </body>

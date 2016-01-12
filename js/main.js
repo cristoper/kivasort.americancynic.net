@@ -1,7 +1,7 @@
 // Change m4 quotes to something that doesn't ruin syntax highlighting or
 // interfere with the rest of the file:
-//changequote(`<<', `>>') 
-undivert(<<js/ks/kiva_sort.js>>)
+//m4_changequote(`<<', `>>')
+m4_undivert(<<js/ks/kiva_sort.js>>)
 $(document).ready(function () {
 
     var kivaTable = $('#KivaSort');
@@ -88,7 +88,7 @@ $(document).ready(function () {
             }, 'reload'],
 
             /** To NOT use the cached json file, run make with 'NO_AJAX=y' */
-            ifdef(<<no_ajax>>, <<ks_partnerData: undivert(js/partners.json),>>)
+            m4_ifdef(<<no_ajax>>, <<ks_partnerData: m4_undivert(js/partners.json),>>)
 
 
             /* Sort by Portfolio Yield, then Profitability */

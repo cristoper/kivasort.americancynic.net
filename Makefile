@@ -12,7 +12,7 @@ UGLIFY := node_modules/uglify-js/bin/uglifyjs
 UGLYFLAGS := --compress --mangle
 
 PP := m4
-PPFLAGS := $(if $(DEBUG_MODE), -DDEBUG_MODE)
+PPFLAGS := --prefix-builtins $(if $(DEBUG_MODE), -DDEBUG_MODE)
 # To enable use of pre-fetched partners.json use:
 PPFLAGS += $(if $(NO_AJAX), -Dno_ajax)
 
