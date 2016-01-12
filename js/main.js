@@ -5,6 +5,7 @@ m4_undivert(<<js/ks/kiva_sort.js>>)
 $(document).ready(function () {
 
     window.onpopstate = function(event) {
+        // Change tabs on back/forward buttons
         var hash = $(window.location.hash);
         if (window.location.hash == "") {
             hash = $("#data");
