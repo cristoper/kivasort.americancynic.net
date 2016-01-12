@@ -4,23 +4,38 @@
 m4_undivert(<<js/ks/kiva_sort.js>>)
 $(document).ready(function () {
 
+    window.onpopstate = function(event) {
+        var hash = $(window.location.hash);
+        if (window.location.hash == "") {
+            hash = $("#data");
+        }
+        var index = hash.index() - 1;
+        $('#tabs').tabs('option', 'active', index);
+    };
+
     var kivaTable = $('#KivaSort');
     var dTable;
 
     $('#tabs').tabs({
         activate: function(e, ui) {
 
-            /* Update URL bar to allow bookmarking of tabs
-             *
-             * TODO: make work with browser's forward/back buttons (using
-             * something like http://www.asual.com/jquery/address/)
-             *
-             * The scrollmem stuff is to prevent scrolling when setting the id
-             * fragment (see http://stackoverflow.com/a/3041606/408930)
-             */
-            var scrollmem = $('body').scrollTop();
-            window.location.hash = ui.newPanel.attr('id');
-            $('body').scrollTop(scrollmem); 
+            /* Update URL bar to allow bookmarking of tabs and back/forward
+            * buttons in browsers which support the History API */
+
+            var hash = ui.newPanel.attr('id');
+
+            if (e.originalEvent && e.originalEvent.type == "click") {
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + hash);
+                } else {
+                    /* At least allow non-History API browsers to bookmark tabs
+                     * The scrollmem stuff is to prevent scrolling when setting the id
+                     * fragment (see http://stackoverflow.com/a/3041606/408930) */
+                    var scrollmem = $('html,body').scrollTop();
+                    window.location.hash = hash;
+                    $('html,body').scrollTop(scrollmem);
+                }
+            }
 
             if (ui.newTab.is($('#fpd_link'))) {
                 // If the user is on a different tab when the table data loads,
