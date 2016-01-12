@@ -9,6 +9,19 @@ $(document).ready(function () {
 
     $('#tabs').tabs({
         activate: function(e, ui) {
+
+            /* Update URL bar to allow bookmarking of tabs
+             *
+             * TODO: make work with browser's forward/back buttons (using
+             * something like http://www.asual.com/jquery/address/)
+             *
+             * The scrollmem stuff is to prevent scrolling when setting the id
+             * fragment (see http://stackoverflow.com/a/3041606/408930)
+             */
+            var scrollmem = $('body').scrollTop();
+            window.location.hash = ui.newPanel.attr('id');
+            $('body').scrollTop(scrollmem); 
+
             if (ui.newTab.is($('#fpd_link'))) {
                 // If the user is on a different tab when the table data loads,
                 // then the Responsive plugin will not calculate column widths
@@ -78,8 +91,8 @@ $(document).ready(function () {
             ifdef(<<no_ajax>>, <<ks_partnerData: undivert(js/partners.json),>>)
 
 
-        /* Sort by Portfolio Yield, then Profitability */
-        order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
+            /* Sort by Portfolio Yield, then Profitability */
+            order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
     });
 
     function toggleIncomplete(isChecked) {
