@@ -41,7 +41,10 @@ $(DST_JSDIR)/partners.json: $(SRC_JSDIR)/partners.json
 $(DST_CSSDIR)/main.css: $(SRC_CSSDIR)/main.css | $(DST_CSSDIR)
 	cp $< $@
 
-$(OUTPUTDIR) $(DST_JSDIR) $(DST_CSSDIR):
+$(OUTPUTDIR):
+	test -d $@ || mkdir $@
+
+$(DST_JSDIR) $(DST_CSSDIR): $(OUTPUTDIR)
 	test -d $@ || mkdir $@
 
 # Copy everything in root/ to output/
