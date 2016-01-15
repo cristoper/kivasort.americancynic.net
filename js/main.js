@@ -114,7 +114,7 @@ $(document).ready(function () {
         if (isChecked) {
             dTable.columns('th').search('^(?!-$)', true, false).draw();
         } else{
-            dTable.columns('th').search('.', true).draw();
+            dTable.columns('th').search('', false, false).draw();
         }
     }
 
@@ -122,7 +122,7 @@ $(document).ready(function () {
         if (isChecked) {
             dTable.columns('#statusCol').search('^active', true).draw();
         } else {
-            dTable.columns('#statusCol').search('.', true).draw();
+            dTable.columns('#statusCol').search('', false, false).draw();
         }
     }
 
