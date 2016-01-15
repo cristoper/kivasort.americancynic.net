@@ -112,15 +112,15 @@ $(document).ready(function () {
 
     function toggleIncomplete(isChecked) {
         if (isChecked) {
-            dTable.columns('th').search('^(?!-$)', true, false).draw();
+            dTable.columns().search('^(?!-$)', true, false).draw();
         } else{
-            dTable.columns('th').search('', false, false).draw();
+            dTable.columns().search('', false, false).draw();
         }
     }
 
     function toggleInactive(isChecked) {
         if (isChecked) {
-            dTable.columns('#statusCol').search('^active', true).draw();
+            dTable.columns('#statusCol').search('^active', true, false).draw();
         } else {
             dTable.columns('#statusCol').search('', false, false).draw();
         }
