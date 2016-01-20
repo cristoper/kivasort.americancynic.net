@@ -57,7 +57,7 @@ $(DST_JSDIR)/combined.js: $(SRC_JSDIR)/combined.js.in $(JS_FILES) | $(DST_JSDIR)
 	$(if $(DEBUG_MODE),,$(UGLIFY) $@ $(UGLYFLAGS) -o $@)
 
 $(SRC_JSDIR)/partners.json:
-	$(SRC_JSDIR)/ks/fetchkivajson.js > $@
+	bower_components/jquery-kivasort/fetchkivajson.js > $@
 
 $(DST_JSDIR)/partners.json: $(SRC_JSDIR)/partners.json
 	@# Only copy to output/ if no_ajax is specified
