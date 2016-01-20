@@ -16,18 +16,43 @@ PPFLAGS := --prefix-builtins $(if $(DEBUG_MODE), -DDEBUG_MODE)
 # To enable use of pre-fetched partners.json use:
 PPFLAGS += $(if $(NO_AJAX), -Dno_ajax)
 
+JS_DT := $(addprefix bower_components/datatables.net, \
+/js/jquery.dataTables.js \
+-jqui/js/dataTables.jqueryui.js \
+-buttons/js/dataTables.buttons.js \
+-buttons/js/buttons.colVis.js \
+-buttons/js/buttons.html5.js \
+-buttons-jqui/js/buttons.jqueryui.js \
+-colreorder/js/dataTables.colReorder.js \
+-fixedheader/js/dataTables.fixedHeader.js \
+-responsive/js/dataTables.responsive.js)
+
+JS_UI := $(addprefix bower_components/jquery-ui/ui/, \
+core.js \
+widget.js \
+mouse.js \
+tabs.js \
+slider.js \
+datepicker.js)
+
+JS_FILES = \
+bower_components/jquery/dist/jquery.js \
+$(JS_DT) \
+$(JS_UI) \
+bower_components/jquery-kivasort/kiva_sort.js \
+$(SRC_JSDIR)/main.js
+
 all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css $(DST_JSDIR)/partners.json
 
 deploy-pages: all
 	sh deploy-to-pages.sh
 
-$(OUTPUTDIR)/index.html: index.html $(SRC_JSDIR)/combined.js
+$(OUTPUTDIR)/index.html: index.html $(DST_JSDIR)/combined.js
 	$(PP) $(PPFLAGS) $< > $@
 
-# Combine main.js, partners.json, kiva_sort.js
+# Concatenate JavaScript
 # If $(DEBUG_MODE) is defined, then don't compress (ie: make DEBUG_MODE=yes)
-$(SRC_JSDIR)/combined.js: $(SRC_JSDIR)/main.js $(SRC_JSDIR)/ks/kiva_sort.js \
-    | $(DST_JSDIR)
+$(DST_JSDIR)/combined.js: $(SRC_JSDIR)/combined.js.in $(JS_FILES) | $(DST_JSDIR)
 	$(PP) $(PPFLAGS) $< > $@
 	$(if $(DEBUG_MODE),,$(UGLIFY) $@ $(UGLYFLAGS) -o $@)
 
@@ -53,6 +78,5 @@ $(DST_ROOT_FILES): output/%: root/%|$(OUTPUTDIR)
 
 clean:
 	-rm -r $(OUTPUTDIR)/*
-	-rm $(SRC_JSDIR)/combined.js
 
 .PHONY: all clean javascript css deploy-pages
