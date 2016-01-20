@@ -1,0 +1,32 @@
+//m4_changequote(`<<', `>>')
+
+// Don't include jquery here, we'll use a CDN because it is so popularly and
+// probably cached
+//#m4_undivert(<<bower_components/jquery/dist/jquery.js>>)
+
+// jQuery-ui deps
+m4_undivert(<<bower_components/jquery-ui/ui/core.js>>)
+m4_undivert(<<bower_components/jquery-ui/ui/widget.js>>)
+m4_undivert(<<bower_components/jquery-ui/ui/mouse.js>>)
+m4_undivert(<<bower_components/jquery-ui/ui/tabs.js>>)
+m4_undivert(<<bower_components/jquery-ui/ui/slider.js>>)
+m4_undivert(<<bower_components/jquery-ui/ui/datepicker.js>>)
+
+// DataTables
+m4_undivert(<<bower_components/datatables.net/js/jquery.dataTables.js>>)
+m4_undivert(<<bower_components/datatables.net-jqui/js/dataTables.jqueryui.js>>)
+
+// DT Extensions
+m4_undivert(<<bower_components/datatables.net-buttons/js/dataTables.buttons.js>>)
+m4_undivert(<<bower_components/datatables.net-buttons/js/buttons.colVis.js>>)
+m4_undivert(<<bower_components/datatables.net-buttons/js/buttons.html5.js>>)
+m4_undivert(<<bower_components/datatables.net-buttons-jqui/js/buttons.jqueryui.js>>)
+
+m4_undivert(<<bower_components/datatables.net-colreorder/js/dataTables.colReorder.js>>)
+
+m4_undivert(<<bower_components/datatables.net-fixedheader/js/dataTables.fixedHeader.js>>)
+
+m4_undivert(<<bower_components/datatables.net-responsive/js/dataTables.responsive.js>>)
+
+// KivaSort, of course
+m4_undivert(<<bower_components/jquery-kivasort/kiva_sort.js>>)

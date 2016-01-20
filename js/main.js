@@ -1,7 +1,6 @@
 // Change m4 quotes to something that doesn't ruin syntax highlighting or
 // interfere with the rest of the file:
 //m4_changequote(`<<', `>>')
-m4_undivert(<<js/ks/kiva_sort.js>>)
 $(document).ready(function () {
 
     window.onpopstate = function(event) {
