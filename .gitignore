@@ -1,4 +1,6 @@
 # Include your project-specific ignores in this file
 *.sw[pon]
 output
-js/combined.js
+bower_components/
+node_modules/
+
