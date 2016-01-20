@@ -1,0 +1,30 @@
+{
+  "name": "KivaSort.org",
+  "description": "A simple web app which provides a table of Kiva's field partners which may be sorted and filtered.",
+  "main": "",
+  "authors": [
+    "Chris Burkhardt <chris@mretc.net>"
+  ],
+  "license": "WTFPL",
+  "homepage": "https://github.com/cristoper/kivasort.org",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "~1.11.4",
+    "datatables.net-jqui": "~1.10.10",
+    "datatables.net": "~1.10.10",
+    "datatables.net-buttons-jqui": "~1.1.0",
+    "datatables.net-buttons": "~1.1.0",
+    "datatables.net-colreorder-jqui": "~1.3.0",
+    "datatables.net-fixedheader-jqui": "~3.1.0",
+    "datatables.net-responsive-jqui": "~2.0.0",
+    "jquery-kivasort": "~1.2.0"
+  }
+}
