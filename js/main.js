@@ -26,7 +26,7 @@ $(document).ready(function () {
             var hash = ui.newPanel.attr('id');
 
             if (e.originalEvent && e.originalEvent.type == "click") {
-                if (history.pushState) {
+                if (window.location.protocol != "file:" && history.pushState) {
                     history.pushState(null, null, '#' + hash);
                 } else {
                     /* At least allow non-History API browsers to bookmark tabs
