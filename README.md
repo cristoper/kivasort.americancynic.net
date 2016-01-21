@@ -78,3 +78,5 @@ Range sliders for filtering at least some columns (Portfolio Yield, Profitabilit
 ## License
 
 KivaSort.org is licensed under the term of the [WTFPL](http://www.wtfpl.net/about/), version 2. See [LICENSE.txt](LICENSE.txt) as included with this project.
+
+Any third-party components distributed with the KivaSort.org source (everything under `bower_components/`) is distributed under the terms of its own license agreement. In particular, both DataTables and jQuery-ui are copyrighted and distributed under the terms of the [MIT license](https://tldrlegal.com/license/mit-license).
