@@ -27,15 +27,11 @@ The Makefile can also be configured with three options:
 
 - `make THEME=<name>` will build the site with the named jquery-ui theme. The name must match one of the themes installed in `bower_components/jquery-ui/themes/`.
 
-KivaSort.org relies on the jquery-kivasort plugin, which lives as a subtree in `js/ks/`. It can be updated at any time by:
+### Updating Dependencies
 
-```sh
-# Do this once:
-$ git remote add kivasort git@github.com:cristoper/jquery-KivaSort.git
+KivaSort.org uses [bower](http://bower.io/) to manage its dependencies. The minimum of files from each dependency is tracked in the KivaSort git repository so that the site can be built immediately after cloning.
 
-# Do this whenever you'd like to update jquery-kivasort
-$ git subtree pull -P js/ks kivasort dev
-```
+To update all dependencies run `bower update` and then check any modified files into git.
 
 ### Deploy to gh-pages
 
