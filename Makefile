@@ -4,6 +4,7 @@ SRC_JSDIR := js
 SRC_CSSDIR := css
 DST_JSDIR = $(OUTPUTDIR)/$(SRC_JSDIR)
 DST_CSSDIR = $(OUTPUTDIR)/$(SRC_CSSDIR)
+THEME := redmond
 
 ROOT_FILES = $(wildcard $(ROOTDIR)/*)
 DST_ROOT_FILES = $(patsubst root/%, $(OUTPUTDIR)/%, $(ROOT_FILES))
@@ -12,7 +13,7 @@ UGLIFY := node_modules/uglify-js/bin/uglifyjs
 UGLYFLAGS := --compress --mangle
 
 PP := m4
-PPFLAGS := --prefix-builtins $(if $(DEBUG_MODE), -DDEBUG_MODE)
+PPFLAGS := --prefix-builtins -DTHEME=$(THEME) $(if $(DEBUG_MODE), -DDEBUG_MODE)
 # To enable use of pre-fetched partners.json use:
 PPFLAGS += $(if $(NO_AJAX), -Dno_ajax)
 
@@ -42,12 +43,26 @@ $(JS_UI) \
 bower_components/jquery-kivasort/kiva_sort.js \
 $(SRC_JSDIR)/main.js
 
-all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) $(DST_CSSDIR)/main.css $(DST_JSDIR)/partners.json
+CSS_DT := $(addprefix bower_components/datatables.net, \
+-jqui/css/dataTables.jqueryui.css \
+-buttons-jqui/css/buttons.jqueryui.css \
+-colreorder-jqui/css/colReorder.jqueryui.css \
+-fixedheader-jqui/css/fixedHeader.jqueryui.css \
+-responsive-jqui/css/responsive.jqueryui.css)
+
+CSS_FILES = bower_components/jquery-ui/themes/$(THEME)/jquery-ui.css \
+	    $(CSS_DT) $(SRC_CSSDIR)/combined.css.in $(SRC_CSSDIR)/main.css
+
+all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) javascript css
+
+javascript: $(DST_JSDIR)/combined.js $(SRC_JSDIR)/partners.json
+
+css: $(DST_CSSDIR)/combined.css $(DST_CSSDIR)/images
 
 deploy-pages: all
 	sh deploy-to-pages.sh
 
-$(OUTPUTDIR)/index.html: index.html $(DST_JSDIR)/combined.js
+$(OUTPUTDIR)/index.html: index.html javascript css | $(OUTPUTDIR)
 	$(PP) $(PPFLAGS) $< > $@
 
 # Concatenate JavaScript
@@ -56,6 +71,12 @@ $(DST_JSDIR)/combined.js: $(SRC_JSDIR)/combined.js.in $(JS_FILES) | $(DST_JSDIR)
 	$(PP) $(PPFLAGS) $< > $@
 	$(if $(DEBUG_MODE),,$(UGLIFY) $@ $(UGLYFLAGS) -o $@)
 
+$(DST_CSSDIR)/combined.css: $(SRC_CSSDIR)/combined.css.in $(CSS_FILES) | $(DST_CSSDIR)
+	$(PP) $(PPFLAGS) $< > $@
+
+$(DST_CSSDIR)/images:  bower_components/jquery-ui/themes/$(THEME)/images
+	cp -r $< $@
+
 $(SRC_JSDIR)/partners.json:
 	bower_components/jquery-kivasort/fetchkivajson.js > $@
 
@@ -63,13 +84,7 @@ $(DST_JSDIR)/partners.json: $(SRC_JSDIR)/partners.json
 	@# Only copy to output/ if no_ajax is specified
 	$(if $(NO_AJAX), cp $< $@)
 
-$(DST_CSSDIR)/main.css: $(SRC_CSSDIR)/main.css | $(DST_CSSDIR)
-	cp $< $@
-
-$(OUTPUTDIR):
-	test -d $@ || mkdir $@
-
-$(DST_JSDIR) $(DST_CSSDIR): $(OUTPUTDIR)
+$(OUTPUTDIR) $(DST_JSDIR) $(DST_CSSDIR):
 	test -d $@ || mkdir $@
 
 # Copy everything in root/ to output/
