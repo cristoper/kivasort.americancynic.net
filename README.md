@@ -19,13 +19,13 @@ The make file will concatenate and minify the JavaScript and copy everything to 
 
 ### Build Options
 
-The Makefile can also be configured with two options:
+The Makefile can also be configured with three options:
 
 - `make DEBUG_MODE=y` will not compress the JavaScript, and it will link to non-minified versions of JavaScript and CSS from the Datatables CDN.
 
 - `make NO_AJAX=y` will include (and generate, if necessary) `js/partners.json` and use that on its initial load instead of making an API call to fetch the JSON. If the site is built with this option, then it should periodically be re-built with up-to-date data (like by running `js/ks/fetchkivajson.js` from a cron job).
 
-### Updating jquery-kivasort
+- `make THEME=<name>` will build the site with the named jquery-ui theme. The name must match one of the themes installed in `bower_components/jquery-ui/themes/`.
 
 KivaSort.org relies on the jquery-kivasort plugin, which lives as a subtree in `js/ks/`. It can be updated at any time by:
 
