@@ -62,7 +62,8 @@ css: $(DST_CSSDIR)/combined.css $(DST_CSSDIR)/images
 deploy-pages: all
 	sh deploy-to-pages.sh
 
-$(OUTPUTDIR)/index.html: index.html javascript css | $(OUTPUTDIR)
+$(OUTPUTDIR)/index.html: index.html \
+    $(DST_JSDIR)/combined.js $(DST_CSSDIR)/combined.css | $(OUTPUTDIR)
 	$(PP) $(PPFLAGS) $< > $@
 
 # Concatenate JavaScript
