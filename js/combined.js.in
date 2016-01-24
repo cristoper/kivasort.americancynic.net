@@ -28,5 +28,9 @@ m4_undivert(<<bower_components/datatables.net-fixedheader/js/dataTables.fixedHea
 
 m4_undivert(<<bower_components/datatables.net-responsive/js/dataTables.responsive.js>>)
 
+// jquery-ui-slider-pips
+
+m4_undivert(<<bower_components/jQuery-ui-Slider-Pips/dist/jquery-ui-slider-pips.js>>)
+
 // KivaSort, of course
 m4_undivert(<<bower_components/jquery-kivasort/kiva_sort.js>>)

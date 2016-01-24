@@ -42,6 +42,7 @@ JS_FILES = \
 bower_components/jquery/dist/jquery.js \
 $(JS_DT) \
 $(JS_UI) \
+bower_components/jQuery-ui-Slider-Pips/dist/jquery-ui-slider-pips.js \
 bower_components/jquery-kivasort/kiva_sort.js \
 $(SRC_JSDIR)/main.js
 
@@ -53,6 +54,7 @@ CSS_DT := $(addprefix bower_components/datatables.net, \
 -responsive-jqui/css/responsive.jqueryui.css)
 
 CSS_FILES = bower_components/jquery-ui/themes/$(THEME)/jquery-ui.css \
+	    bower_components/jQuery-ui-Slider-Pips/dist/jquery-ui-slider-pips.css \
 	    $(CSS_DT) $(SRC_CSSDIR)/combined.css.in $(SRC_CSSDIR)/main.css
 
 all: $(OUTPUTDIR)/index.html $(DST_ROOT_FILES) javascript css
