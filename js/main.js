@@ -63,7 +63,6 @@ $(document).ready(function () {
 
         // Initially hide/show incomplete rows based on HTML
         toggleIncomplete($('#hideIncomplete').is(':checked'));
-        toggleInactive($('#hideInactive').is(':checked'));
     });
 
     kivaTable.on('xhr.dt', function() {
@@ -118,22 +117,9 @@ $(document).ready(function () {
         }
     }
 
-    function toggleInactive(isChecked) {
-        if (isChecked) {
-            dTable.columns('#statusCol').search('^active', true, false).draw();
-        } else {
-            dTable.columns('#statusCol').search('', false, false).draw();
-        }
-    }
-
     // hide/show incomplete rows whenever checkbox is clicked
     $('#hideIncomplete').click(function() {
         toggleIncomplete(this.checked);
-    });
-
-    // hide/show inactive rows whenever checkbox is clicked
-    $('#hideInactive').click(function() {
-        toggleInactive(this.checked);
     });
 
 });
