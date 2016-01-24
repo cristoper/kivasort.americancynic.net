@@ -134,6 +134,15 @@ dt {
     text-align: center;
 }
 
+td .ui-slider-float .ui-slider-tip, td .ui-slider-float .ui-slider-tip-label {
+    min-width: 34px;
+    width: auto;
+    padding: 1px;
+}
+
+tr input[type="search"] {
+    width: 100%;
+}
 
 /* ==========================================================================
 Helper classes
