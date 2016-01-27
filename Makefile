@@ -12,6 +12,8 @@ DST_ROOT_FILES = $(patsubst root/%, $(OUTPUTDIR)/%, $(ROOT_FILES))
 UGLIFY := node_modules/uglify-js/bin/uglifyjs
 UGLYFLAGS := --compress --mangle
 
+CLEANCSS := node_modules/clean-css/bin/cleancss
+
 PP := m4
 PPFLAGS := --prefix-builtins -DTHEME=$(THEME) $(if $(DEBUG_MODE), -DDEBUG_MODE)
 # To enable use of pre-fetched partners.json use:
@@ -74,6 +76,7 @@ $(DST_JSDIR)/combined.js: $(SRC_JSDIR)/combined.js.in $(JS_FILES) | $(DST_JSDIR)
 
 $(DST_CSSDIR)/combined.css: $(SRC_CSSDIR)/combined.css.in $(CSS_FILES) | $(DST_CSSDIR)
 	$(PP) $(PPFLAGS) $< > $@
+	$(if $(DEBUG_MODE),,$(CLEANCSS) $@ -o $@)
 
 $(DST_CSSDIR)/images:  bower_components/jquery-ui/themes/$(THEME)/images
 	cp -r $< $@
