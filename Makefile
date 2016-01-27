@@ -26,7 +26,6 @@ JS_DT := $(addprefix bower_components/datatables.net, \
 -buttons/js/buttons.colVis.js \
 -buttons/js/buttons.html5.js \
 -buttons-jqui/js/buttons.jqueryui.js \
--colreorder/js/dataTables.colReorder.js \
 -fixedheader/js/dataTables.fixedHeader.js \
 -responsive/js/dataTables.responsive.js)
 
@@ -50,7 +49,6 @@ $(SRC_JSDIR)/main.js
 CSS_DT := $(addprefix bower_components/datatables.net, \
 -jqui/css/dataTables.jqueryui.css \
 -buttons-jqui/css/buttons.jqueryui.css \
--colreorder-jqui/css/colReorder.jqueryui.css \
 -fixedheader-jqui/css/fixedHeader.jqueryui.css \
 -responsive-jqui/css/responsive.jqueryui.css)
 

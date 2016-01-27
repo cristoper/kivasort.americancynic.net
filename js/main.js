@@ -84,7 +84,6 @@ $(document).ready(function () {
         fixedHeader: true,
         lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         dom: 'Bftip',
-        colReorder: true,
         language: {
             buttons: {
                 pageLength: { '-1': "Show all rows", _: "Show %d rows/page" }

@@ -22,8 +22,6 @@ m4_undivert(<<bower_components/datatables.net-buttons/js/buttons.colVis.js>>)
 m4_undivert(<<bower_components/datatables.net-buttons/js/buttons.html5.js>>)
 m4_undivert(<<bower_components/datatables.net-buttons-jqui/js/buttons.jqueryui.js>>)
 
-m4_undivert(<<bower_components/datatables.net-colreorder/js/dataTables.colReorder.js>>)
-
 m4_undivert(<<bower_components/datatables.net-fixedheader/js/dataTables.fixedHeader.js>>)
 
 m4_undivert(<<bower_components/datatables.net-responsive/js/dataTables.responsive.js>>)

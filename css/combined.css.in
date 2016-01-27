@@ -1,13 +1,11 @@
 m4_changequote(`<<', `>>')
 
-
 /* jQuery-ui Theme */
 m4_undivert(<<bower_components/jquery-ui/themes/>>THEME<</jquery-ui.css>>)
 
 /* DataTables */
 m4_undivert(<<bower_components/datatables.net-jqui/css/dataTables.jqueryui.css>>)
 m4_undivert(<<bower_components/datatables.net-buttons-jqui/css/buttons.jqueryui.css>>)
-m4_undivert(<<bower_components/datatables.net-colreorder-jqui/css/colReorder.jqueryui.css>>)
 m4_undivert(<<bower_components/datatables.net-fixedheader-jqui/css/fixedHeader.jqueryui.css>>)
 m4_undivert(<<bower_components/datatables.net-responsive-jqui/css/responsive.jqueryui.css>>)
 
