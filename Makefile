@@ -43,6 +43,7 @@ bower_components/jquery/dist/jquery.js \
 $(JS_DT) \
 $(JS_UI) \
 bower_components/jQuery-ui-Slider-Pips/dist/jquery-ui-slider-pips.js \
+bower_components/datatables-filterwidgets/datatables-filterwidgets.js \
 bower_components/jquery-kivasort/kiva_sort.js \
 $(SRC_JSDIR)/main.js
 
