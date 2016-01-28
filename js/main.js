@@ -102,13 +102,21 @@ $(document).ready(function () {
             },
             loadingRecords: '<div id="loadingrow">...</a>'
         },
-        buttons: [ 'pageLength',
+        buttons: [
+            'pageLength',
             'colvis',  
             { extend: 'collection', text: 'Export',
                 buttons: [
-                    {extend: 'copy', text: 'Copy to Clipboard'},
-                    { extend: 'csv', text: 'Download as CSV'},
-                    { extend: 'json', text: 'View source JSON' }
+                    { extend: 'copy',
+                        text: 'Copy to Clipboard',
+                        exportOptions: {columns: ':visible'}
+                    },
+                    { extend: 'csv',
+                        text: 'Download as CSV',
+                        exportOptions: {columns: ':visible'}
+                    },
+                    { extend: 'json',
+                        text: 'View source JSON' }
                 ]
             }, 'reload'],
 
