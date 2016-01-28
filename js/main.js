@@ -15,12 +15,11 @@ $(document).ready(function () {
 
     var kivaTable = $('#KivaSort');
     var dTable;
-
     $('#tabs').tabs({
         activate: function(e, ui) {
 
             /* Update URL bar to allow bookmarking of tabs and back/forward
-            * buttons in browsers which support the History API */
+             * buttons in browsers which support the History API */
 
             var hash = ui.newPanel.attr('id');
 
