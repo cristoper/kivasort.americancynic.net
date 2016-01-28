@@ -11,7 +11,7 @@ If you want to insert a KivaSort table into your own HTML document, then you wan
 ```sh
 $ git clone git@github.com:cristoper/kivasort.org.git local-kivasort
 $ cd local-kivasort
-$ npm install --dev
+$ npm install
 $ make
 ```
 
