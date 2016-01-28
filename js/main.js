@@ -81,6 +81,19 @@ $(document).ready(function () {
         deferRender: true,
         responsive: true,
         fixedHeader: true,
+        columnFilters: {
+            2: {type: "range", suffix: "%"},
+            3: {type: "range", suffix: "%", numSteps: 15},
+            4: {type: "range", suffix: "%"},
+            5: {type: "range", prefix: "$", numSteps: 50},
+            6: {type: "range", numSteps: 20},
+            7: {type: "range", suffix: "%"},
+            8: {type: "range", suffix: "%"},
+            9: {type: "select"},
+            10: {type: "range", suffix: "%", numSteps: 25},
+            11: {type: "range", suffix: "%"},
+            12: "select"
+        },
         lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         dom: 'Bftip',
         language: {
