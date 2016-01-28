@@ -6,16 +6,16 @@ For a full-featured lending app which also provides a way to filter field partne
 
 ## Building
 
-If you want to insert a KivaSort table into your own HTML document, then you want the [KivaSort jquery plugin](https://github.com/cristoper/jquery-KivaSort). If you actually want to build a local version of KivaSort.org, then clone the repository, install [UglifyJS](http://lisperator.net/uglifyjs/), and run `make`:
+If you want to insert a KivaSort table into your own HTML document, then you want the [KivaSort jquery plugin](https://github.com/cristoper/jquery-KivaSort). If you actually want to build a local version of KivaSort.org, then clone the repository, install the build dependencies, and run `make`:
 
 ```sh
 $ git clone git@github.com:cristoper/kivasort.org.git local-kivasort
 $ cd local-kivasort
-$ npm install uglify-js
+$ npm install --dev
 $ make
 ```
 
-The make file will concatenate and minify the JavaScript and copy everything to its proper place in the `./output/` directory. View the generated site by opening `output/index.html` in a browser (no server required). 
+The make file will concatenate and minify the JavaScript and CSS and then copy everything to its proper place in the `./output/` directory. View the generated site by opening `output/index.html` in a browser (no server required).
 
 ### Build Options
 
