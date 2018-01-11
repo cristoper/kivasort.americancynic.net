@@ -1,16 +1,16 @@
 m4_changequote(`<<', `>>')
 
 /* jQuery-ui Theme */
-m4_undivert(<<bower_components/jquery-ui/themes/>>THEME<</jquery-ui.css>>)
+m4_undivert(<<node_modules/jquery-ui-themes/themes/>>THEME<</jquery-ui.css>>)
 
 /* DataTables */
-m4_undivert(<<bower_components/datatables.net-jqui/css/dataTables.jqueryui.css>>)
-m4_undivert(<<bower_components/datatables.net-buttons-jqui/css/buttons.jqueryui.css>>)
-m4_undivert(<<bower_components/datatables.net-fixedheader-jqui/css/fixedHeader.jqueryui.css>>)
-m4_undivert(<<bower_components/datatables.net-responsive-jqui/css/responsive.jqueryui.css>>)
+m4_undivert(<<node_modules/datatables.net-jqui/css/dataTables.jqueryui.css>>)
+m4_undivert(<<node_modules/datatables.net-buttons-jqui/css/buttons.jqueryui.css>>)
+m4_undivert(<<node_modules/datatables.net-fixedheader-jqui/css/fixedHeader.jqueryui.css>>)
+m4_undivert(<<node_modules/datatables.net-responsive-jqui/css/responsive.jqueryui.css>>)
 
 /* jQuery-ui-Slider-Pips */
-m4_undivert(<<bower_components/jQuery-ui-Slider-Pips/dist/jquery-ui-slider-pips.css>>)
+m4_undivert(<<node_modules/jquery-ui-slider-pips/dist/jquery-ui-slider-pips.css>>)
 
 /* last but not least */
 m4_undivert(<<css/main.css>>)

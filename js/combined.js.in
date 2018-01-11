@@ -2,34 +2,52 @@
 
 // Don't include jquery here, we'll use a CDN because it is so popularly and
 // probably cached
-//#m4_undivert(<<bower_components/jquery/dist/jquery.js>>)
+//#m4_undivert(<<node_modules/jquery/dist/jquery.js>>)
 
-// jQuery-ui deps
-m4_undivert(<<bower_components/jquery-ui/ui/core.js>>)
-m4_undivert(<<bower_components/jquery-ui/ui/widget.js>>)
-m4_undivert(<<bower_components/jquery-ui/ui/mouse.js>>)
-m4_undivert(<<bower_components/jquery-ui/ui/tabs.js>>)
-m4_undivert(<<bower_components/jquery-ui/ui/slider.js>>)
-m4_undivert(<<bower_components/jquery-ui/ui/datepicker.js>>)
+// jQuery-ui core
+// now that it uses AMD-style package, we have to manually include each file
+//
+m4_undivert(<<node_modules/jquery-ui/ui/version.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/data.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/disable-selection.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/focusable.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/form.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/ie.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/keycode.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/labels.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/jquery-1-7.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/plugin.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/safe-active-element.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/safe-blur.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/scroll-parent.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/tabbable.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/unique-id.js>>)
+
+// jQuery-ui widgets
+m4_undivert(<<node_modules/jquery-ui/ui/widget.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/widgets/mouse.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/widgets/tabs.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/widgets/slider.js>>)
+m4_undivert(<<node_modules/jquery-ui/ui/widgets/datepicker.js>>)
 
 // DataTables
-m4_undivert(<<bower_components/datatables.net/js/jquery.dataTables.js>>)
-m4_undivert(<<bower_components/datatables.net-jqui/js/dataTables.jqueryui.js>>)
+m4_undivert(<<node_modules/datatables.net/js/jquery.dataTables.js>>)
+m4_undivert(<<node_modules/datatables.net-jqui/js/dataTables.jqueryui.js>>)
 
 // DT Extensions
-m4_undivert(<<bower_components/datatables.net-buttons/js/dataTables.buttons.js>>)
-m4_undivert(<<bower_components/datatables.net-buttons/js/buttons.colVis.js>>)
-m4_undivert(<<bower_components/datatables.net-buttons/js/buttons.html5.js>>)
-m4_undivert(<<bower_components/datatables.net-buttons-jqui/js/buttons.jqueryui.js>>)
+m4_undivert(<<node_modules/datatables.net-buttons/js/dataTables.buttons.js>>)
+m4_undivert(<<node_modules/datatables.net-buttons/js/buttons.colVis.js>>)
+m4_undivert(<<node_modules/datatables.net-buttons/js/buttons.html5.js>>)
+m4_undivert(<<node_modules/datatables.net-buttons-jqui/js/buttons.jqueryui.js>>)
 
-m4_undivert(<<bower_components/datatables.net-fixedheader/js/dataTables.fixedHeader.js>>)
+m4_undivert(<<node_modules/datatables.net-fixedheader/js/dataTables.fixedHeader.js>>)
 
-m4_undivert(<<bower_components/datatables.net-responsive/js/dataTables.responsive.js>>)
+m4_undivert(<<node_modules/datatables.net-responsive/js/dataTables.responsive.js>>)
 
-m4_undivert(<<bower_components/datatables-filterwidgets/datatables-filterwidgets.js>>)
+m4_undivert(<<node_modules/datatables-filterwidgets/datatables-filterwidgets.js>>)
 
 // jquery-ui-slider-pips
-m4_undivert(<<bower_components/jQuery-ui-Slider-Pips/dist/jquery-ui-slider-pips.js>>)
+m4_undivert(<<node_modules/jquery-ui-slider-pips/dist/jquery-ui-slider-pips.js>>)
 
 // KivaSort, of course
-m4_undivert(<<bower_components/jquery-kivasort/kiva_sort.js>>)
+m4_undivert(<<node_modules/jquery-kivasort/kiva_sort.js>>)
