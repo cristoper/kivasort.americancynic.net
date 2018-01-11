@@ -1,17 +1,17 @@
-# KivaSort.org
+# KivaSort.AmericanCynic.net
 
-[KivaSort.org](http://KivaSort.org) is a simple JavaScript web application which provides a table of Kiva field partners which may be sorted and filtered.
+[KivaSort.AmericanCynic.net](http://KivaSort.AmericanCynic.net) is a simple JavaScript web application which provides a table of Kiva field partners which may be sorted and filtered.
 
 For a full-featured lending app which also provides a way to filter field partners, take a look at [KivaLens.org](http://www.kivalens.org/react/#/search). It is also open source: https://github.com/nuclearspike/kivalensjs
 
 ## Building
 
-If you want to insert a KivaSort table into your own HTML document, then you want the [KivaSort jquery plugin](https://github.com/cristoper/jquery-KivaSort). If you actually want to build a local version of KivaSort.org, then clone the repository, install the build dependencies, and run `make`:
+If you want to insert a KivaSort table into your own HTML document, then you want the [KivaSort jquery plugin](https://github.com/cristoper/jquery-KivaSort). If you actually want to build a local version of the KivaSort website, then clone the repository, install the dependencies, and run `make`:
 
 ```sh
 $ git clone git@github.com:cristoper/kivasort.org.git local-kivasort
 $ cd local-kivasort
-$ npm install
+$ yarn
 $ make
 ```
 
@@ -29,9 +29,9 @@ The Makefile can also be configured with three options:
 
 ### Updating Dependencies
 
-KivaSort.org uses [bower](http://bower.io/) to manage its dependencies. The minimum of files from each dependency is tracked in the KivaSort git repository so that the site can be built immediately after cloning.
+KivaSort uses [yarn](https://yarnpkg.com/) to manage its dependencies.
 
-To update all dependencies run `bower update` and then check any modified files into git.
+To update all dependencies run `yarn upgrade`.
 
 ### Deploy to gh-pages
 
@@ -47,7 +47,7 @@ Feel free to use the [project issues tracker](https://github.com/cristoper/kivas
 
 If you'd like to contribute code or documentation you can either open an issue and attach a patch, or if you use Github then fork this repository and submit a pull request as usual.
 
-For other ways to contribute to this project, see the [support tab of KivaSort.org](http://www.kivasort.org/#support). Thank you!
+For other ways to contribute to this project, see the [support tab of KivaSort](http://kivasort.americancynic.net/#support). Thank you!
 
 ## What's to be done
 
@@ -57,6 +57,6 @@ The 'About' tab could use better instructions for using the site. The HTML is ge
 
 ## License
 
-KivaSort.org is licensed under the term of the [WTFPL](http://www.wtfpl.net/about/), version 2. See [LICENSE.txt](LICENSE.txt) as included with this project.
+The KivaSort website is licensed under the term of the [WTFPL](http://www.wtfpl.net/about/), version 2. See [LICENSE.txt](LICENSE.txt) as included with this project.
 
-Any third-party components distributed with the KivaSort.org source (everything under `bower_components/`) is distributed under the terms of its own license agreement. In particular, both DataTables and jQuery-ui are copyrighted and distributed under the terms of the [MIT license](https://tldrlegal.com/license/mit-license).
+Any third-party components distributed with the KivaSort source (everything under `node_modules/`) is distributed under the terms of its own license agreement. In particular, both DataTables is copyrighted and distributed under the terms of the [MIT license](https://tldrlegal.com/license/mit-license).
