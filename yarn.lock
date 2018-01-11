@@ -278,11 +278,6 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-"datatables-filterwidgets@file:../datatables-filterwidgets":
-  version "1.0.0"
-  dependencies:
-    jquery-ui-slider-pips "^1.11.4"
-
 "datatables-filterwidgets@https://github.com/cristoper/datatables-filterwidgets#dev":
   version "1.0.0"
   resolved "https://github.com/cristoper/datatables-filterwidgets#a5d6dd3e1e926e97415a809b4d8d093a52ebd60d"
