@@ -283,6 +283,12 @@ dashdash@^1.12.0:
   dependencies:
     jquery-ui-slider-pips "^1.11.4"
 
+"datatables-filterwidgets@https://github.com/cristoper/datatables-filterwidgets#dev":
+  version "1.0.0"
+  resolved "https://github.com/cristoper/datatables-filterwidgets#a5d6dd3e1e926e97415a809b4d8d093a52ebd60d"
+  dependencies:
+    jquery-ui-slider-pips "^1.11.4"
+
 datatables.net-buttons-jqui@~1.1.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/datatables.net-buttons-jqui/-/datatables.net-buttons-jqui-1.1.2.tgz#088928d53d0181d6a5f36dca18565e5c13852776"
