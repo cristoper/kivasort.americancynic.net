@@ -7,7 +7,9 @@
   "bugs": {
     "url": "https://github.com/cristoper/kivasort.org/issues"
   },
-  "keywords": ["kiva"],
+  "keywords": [
+    "kiva"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/cristoper/kivasort.org.git"
@@ -17,13 +19,15 @@
     "uglify-js": "^2.6.1"
   },
   "dependencies": {
-    "jquery-ui": "~1.12.0",
-    "datatables.net-jqui": "~1.10.10",
+    "datatables-filterwidgets": "/home/cris/Projects/www/datatables-filterwidgets/",
     "datatables.net": "~1.10.10",
-    "datatables.net-buttons-jqui": "~1.1.0",
     "datatables.net-buttons": "~1.1.0",
+    "datatables.net-buttons-jqui": "~1.1.0",
     "datatables.net-fixedheader-jqui": "~3.1.0",
+    "datatables.net-jqui": "~1.10.10",
     "datatables.net-responsive-jqui": "~2.0.1",
-    "jquery-kivasort": "~1.2.0"
+    "jquery-kivasort": "~1.2.0",
+    "jquery-ui": "~1.12.0",
+    "jquery-ui-themes": "^1.12.0"
   }
 }
