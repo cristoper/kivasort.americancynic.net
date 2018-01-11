@@ -19,7 +19,7 @@
     "uglify-js": "^2.6.1"
   },
   "dependencies": {
-    "datatables-filterwidgets": "/home/cris/Projects/www/datatables-filterwidgets/",
+    "datatables-filterwidgets": "file:../datatables-filterwidgets",
     "datatables.net": "~1.10.10",
     "datatables.net-buttons": "~1.1.0",
     "datatables.net-buttons-jqui": "~1.1.0",
