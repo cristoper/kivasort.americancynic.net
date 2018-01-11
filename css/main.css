@@ -107,7 +107,8 @@ h1 {
 }
 
 .tab_content {
-    max-width: 60em;
+    max-width: 45em;
+    font-family: Arial serif;
 }
 
 .tab_content#data {
