@@ -1,6 +1,5 @@
 # Include your project-specific ignores in this file
 *.sw[pon]
 output
-bower_components/
 node_modules/
 
