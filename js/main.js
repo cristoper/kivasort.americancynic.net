@@ -120,9 +120,11 @@ $(document).ready(function () {
                 ]
             }, 'reload'],
 
-            /** To NOT use the cached json file, run make with 'NO_AJAX=y' */
+            /** To use the cached json file, run make with 'NO_AJAX=y' */
             m4_ifdef(<<no_ajax>>, <<ks_partnerData: m4_undivert(js/partners.json),>>)
 
+            /* Let Kiva know who is using their API */
+            ks_appID: 'net.americancynic.kivasort',
 
             /* Sort by Portfolio Yield, then Profitability */
             order: [[2, "asc"], [3, "asc"], [4, "desc"], [5, "desc"]]
