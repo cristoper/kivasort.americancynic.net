@@ -662,8 +662,8 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
 jquery-kivasort@~1.2.0:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/jquery-kivasort/-/jquery-kivasort-1.2.1.tgz#d80872d76aa37e66c6d37db8b48315e5eab82e85"
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/jquery-kivasort/-/jquery-kivasort-1.2.3.tgz#24644c99161c8696e5042e344090e2d838250532"
   dependencies:
     datatables "~1.10.0"
   optionalDependencies:
