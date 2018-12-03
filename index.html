@@ -58,12 +58,15 @@
     <div id="about" class="tab_content">
         <h2>What is it?</h2>
         <p>A table of <a href='http://kiva.com/'>Kiva's</a> field partners (the microfinance organizations which administer loans made possible by Kiva) which may be sorted and filtered.
+
         <h2>Motivation</h2>
-        <p>Most of Kiva's field partners collect interest on the loans they disburse. The rates of interest vary, but they are sometimes very high despite the fact that much of the risk and cost is offloaded to Kiva and Kiva's generous users. Identifying field partners with high (or low) interest would be easiest if they could all be sorted by their "<a href='http://www.kiva.org/help/borrowingCostComparison#AveragePartnerPortfolioYield'>Portfolio Yield</a>" (average interest rates) and "<a href='http://www.kiva.org/help/borrowingCostComparison#AveragePartnerReturnOnAssets'>Profitability</a>" (return on assets) metrics. The higher those rates, the higher the interest will tend to be on loans from those lenders. Providing the ability to sort the list of Kiva's field partners in such a way is the main motivating force behind the creation of KivaSort.
-        <p>Kiva provides a table of field partners on their web site, but it has limited sorting options (it cannot be sorted by portfolio yield, for example). Kiva does provide <a href='http://build.kiva.org/'>nice APIs</a> for their various services, which KivaSort uses. Another third-party website called <a href='http://www.kivalens.org/'>KivaLens.org</a> exists for filtering field partners. However, until very recently (July 2015) it required Microsoft's Silverlight plugin and did not run on many browsers.
-        <p>By default, KivaSort lists field partners ordered primarily by "Portfolio Yield" so that field partners with low interest rates will be near the top. But note that expensive loans do not necessarily indicate usurious loans (at least not more usurious than other lenders); some locations have legitimately high costs associated with administering loans due to such factors as social instability, inflation, and lack of infrastructure. In that respect, a high "Profitability" metric may be the best way to identify highly exploitative lenders &mdash; although a consistently negative "Profitability" may indicate a non-sustainable field partner.
+        <p>I created KivaSort to complement an essay I wrote called <a href='https://americancynic.net/log/2018/12/3/kivas_interest_rates/'>Microfinance and the re-exploitation of women: Some thoughts on Kiva's interest rates</a>.
+        <p>Most of Kiva's field partners collect interest on the loans they disburse. The rates of interest vary, but they are sometimes very high despite the fact that much of the risk and cost is offloaded to Kiva and Kiva's generous users. Identifying field partners with high (or low) interest would be easiest if they could all be sorted by their "<a href='https://www.kiva.org/help/solution/average_cost_to_borrower_p_y'>Portfolio Yield</a>" (average interest rates) and "<a href='https://www.kiva.org/help/solution/what_does_profitability_return_on_assets_mean'>Profitability</a>" (return on assets) metrics. The higher those rates, the higher the interest will tend to be on loans from those lenders. Providing the ability to sort the list of Kiva's field partners in such a way is the main motivating force behind the creation of KivaSort.
+        <p>Kiva provides a table of field partners on their web site, but it has limited sorting options (it cannot be sorted by portfolio yield, for example). Kiva does provide <a href='http://build.kiva.org/'>nice APIs</a> for their various services, which KivaSort uses.
+
         <h3>Further reading</h3>
         <ul>
+            <li><a href='https://americancynic.net/log/2018/12/3/kivas_interest_rates/'>Microfinance and the re-exploitation of women: Some thoughts on Kiva's interest rates</a>
             <li><a href='https://web.archive.org/web/20150104215222/http://blog.microfinancetransparency.com/whats-wrong-with-kivas-portfolio-yield-statistic/' title='What’s Wrong With Kiva’s Portfolio Yield Statistic?'>"What’s Wrong With Kiva’s Portfolio Yield Statistic?" by Hugh Sinclair</a></li>
             <li><a href='https://books.google.com/books/about/Seduced_and_Betrayed.html?id=h5cRvgAACAAJ'>Seduced and Betrayed: Exposing the Contemporary Microfinance Phenomenon</a> Edited by Milford Bateman and Kate Mclean (Santa Fe: School for Advanced Research Press, 2017) is the most complete single-volume criticism of microfinance that I know of.</li>
         </ul>
@@ -75,6 +78,7 @@
         </ul>
 
         <h2>Hints on Using KivaSort</h2>
+        <p>By default, KivaSort lists field partners ordered primarily by "Portfolio Yield" so that field partners with low interest rates will be near the top. But note that expensive loans do not necessarily indicate usurious loans (at least not more usurious than other lenders); some locations have legitimately high costs associated with administering loans due to such factors as social instability, inflation, and lack of infrastructure. In that respect, a high "Profitability" metric may be the best way to identify highly exploitative lenders &mdash; although a consistently negative "Profitability" may indicate a non-sustainable field partner.
         <p>Hopefully the various controls for filtering, sorting, and exporting the table data are self-explanatory. Here are a few tips:
 
         <ul>
@@ -90,25 +94,21 @@
         </ul>
 
         <h2>Open Source</h2>
-        <p>The KivaSort web site is completely open source. If you'd like to view or contribute to the project, please take a look at the public git repository: <a href='https://github.com/cristoper/kivasort.americancynic.net'>https://github.com/cristoper/kivasort.americancynic.net</a>
+        <p>The KivaSort web site is completely open source. If you'd like to view or contribute to the project, please take a look at the public git repository:
+            <ul>
+                <li><a href='https://github.com/cristoper/kivasort.americancynic.net'>https://github.com/cristoper/kivasort.americancynic.net</a></li>
+                <li><a href='https://github.com/cristoper/jquery-KivaSort/'>JQuery-KivaSort</a> - a JQuery plugin which fetches field partner data from Kiva and wraps it in a sortable DataTable.</li>
+            </ul>
 
         <h2>Who?</h2>
         <p>KivaSort.americancynic.net and the KivaSort JQuery plugin were created and are maintained by <a href='https://github.com/cristoper'>chris burkhardt</a> &lt;<a href='mailto:chris@mretc.net'>chris@mretc.net</a>&gt;.
     </div>
 
     <div id="support" class="tab_content">
-        <p>I write small, Free software. If you found KivaSort helpful, please consider making a small contribution to further my work on this and similar projects.
-        <h3>Direct donations</h3>
+        <p>I write small, Free software and radical social commentary. If you found KivaSort helpful, please consider making a small contribution to further my work on this and similar projects.
         <ul>
             <li>Support my work by sending a couple dollars via PayPal: <a href='https://paypal.me/cristoper/5' title='Make donation to author via PayPal'>donate to cris@mretc.net</a></li>
-        </ul>
-        <h3>Contribute code and bug reports</h3>
-        <p>KivaSort is an open-source project, which depends on larger open-source projects, and we all need bug/typo reports, feature requests, and code/documentation patches. Please take a look at these projects if you'd like to help out:
-        <ul>
-            <li><a href='https://github.com/cristoper/kivasort.americancynic.net'>KivaSort.americancynic.net</a> - this website's git repository.</li>
-            <li><a href='http://datatables.net/'>DataTables</a> - the JQuery plugin which does all of the hard work of making HTML tables dynamic.</li>
-            <li><a href='https://github.com/cristoper/jquery-KivaSort/'>JQuery-KivaSort</a> - a JQuery plugin which fetches field partner data from Kiva and wraps it in a sortable DataTable.</li>
-            <li><a href='https://github.com/cristoper/datatables-filterwidgets'>datatables-filterwidgets</a> - a DataTables extension which makes it easy to add filter widgets to each column.</li>
+            <li>Support my writing <a href='https://www.patreon.com/acynic'>via Patreon</a></li>
         </ul>
     </div>
 </div>
