@@ -15,8 +15,8 @@
     "url": "https://github.com/cristoper/kivasort.org.git"
   },
   "devDependencies": {
-    "clean-css": "^3.4.9",
-    "uglify-js": "^2.6.1"
+    "clean-css": "^4.1",
+    "uglify-js": "^2.6"
   },
   "dependencies": {
     "datatables-filterwidgets": "https://github.com/cristoper/datatables-filterwidgets#dev",
