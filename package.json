@@ -15,7 +15,7 @@
     "url": "https://github.com/cristoper/kivasort.org.git"
   },
   "devDependencies": {
-    "clean-css": "^3.4.9",
+    "clean-css": "^4.1.11",
     "uglify-js": "^2.6.1"
   },
   "dependencies": {
