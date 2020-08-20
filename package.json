@@ -15,19 +15,21 @@
     "url": "https://github.com/cristoper/kivasort.org.git"
   },
   "devDependencies": {
-    "clean-css": "^4.1",
+    "clean-css-cli": "^4.1",
     "uglify-js": "^2.6"
   },
   "dependencies": {
     "datatables-filterwidgets": "https://github.com/cristoper/datatables-filterwidgets#dev",
     "datatables.net": "~1.10.10",
-    "datatables.net-buttons": "~1.1.0",
-    "datatables.net-buttons-jqui": "~1.1.0",
-    "datatables.net-fixedheader-jqui": "~3.1.0",
+    "datatables.net-buttons": "^1.1.0",
+    "datatables.net-buttons-jqui": "^1.1.0",
+    "datatables.net-fixedheader-jqui": "^3.1.0",
     "datatables.net-jqui": "~1.10.10",
-    "datatables.net-responsive-jqui": "~2.0.1",
+    "datatables.net-responsive-jqui": "^2.0.1",
+    "jquery": "^3.5.0",
     "jquery-kivasort": "~1.3.0",
-    "jquery-ui": "~1.12.0",
-    "jquery-ui-themes": "^1.12.0"
+    "jquery-ui": "^1.12.0",
+    "jquery-ui-themes": "^1.12.0",
+    "lodash.template": "^4.5.0"
   }
 }

@@ -13,7 +13,7 @@ DST_ROOT_FILES = $(patsubst root/%, $(OUTPUTDIR)/%, $(ROOT_FILES))
 UGLIFY := $(MODS)/uglify-js/bin/uglifyjs
 UGLYFLAGS := --compress --mangle
 
-CLEANCSS := $(MODS)/clean-css/bin/cleancss
+CLEANCSS := $(MODS)/clean-css-cli/bin/cleancss
 
 PP := m4
 PPFLAGS := --prefix-builtins -DTHEME=$(THEME) $(if $(DEBUG_MODE), -DDEBUG_MODE)
